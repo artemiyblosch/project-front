@@ -12,9 +12,11 @@ function auth(formData : FormData) {
     if(name == null || password == null) return;
     
     authCall({name,password})
-    .then(() => {
-        setLocal("User",{name,password});
-        traverse('/');
+    .then((response) => {
+        response.text().then((r)=>{
+            setLocal("User",r);
+            traverse('/');
+        })
     })
     .catch(() => alert("NO!"))
 }
@@ -31,6 +33,7 @@ export default function LoginPage() {
             <Flex direction='column' gap="10px">
                 <input name="name" required/>
                 <input name="password" type="password" required/>
+                <input name="csrfmiddlewaretoken" type="hidden"/>
                 <button type="submit">Submit</button>
             </Flex>
         </Form>
