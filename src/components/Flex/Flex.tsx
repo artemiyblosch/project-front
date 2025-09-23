@@ -30,7 +30,8 @@ export const Flex : React.FC<FlexProps> = ({
     <div className={className} style={{
       justifyContent: defaulted(justifyContent),
       alignItems: defaulted(align),
-      flexDirection: defaulted(direction)
+      flexDirection: defaulted(direction),
+      display: 'flex',
     }}>
       {children}
     </div> )
