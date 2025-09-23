@@ -4,6 +4,7 @@ import { removeLocal, setLocal } from '@/lib/localstorage';
 import { traverse } from '@/lib/traverse';
 import Form from 'next/form'
 import React from 'react';
+import styles from './login.module.scss'
 
 function auth(formData : FormData) {
     const name = formData.get("name")?.toString();
@@ -24,11 +25,14 @@ export default function LoginPage() {
     },[]);
 
     return ( 
-    <Flex direction='column'>
-        <Form action={auth}>
-            <input name="name" required/>
-            <input name="password" type="password" required/>
-            <button type="submit">Submit</button>
+    <div className={styles.container}>
+        <h1>Login</h1>
+        <Form action={auth}>   
+            <Flex direction='column' gap="10px">
+                <input name="name" required/>
+                <input name="password" type="password" required/>
+                <button type="submit">Submit</button>
+            </Flex>
         </Form>
-    </Flex> )
+    </div>)
 }

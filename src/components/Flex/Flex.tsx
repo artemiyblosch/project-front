@@ -13,6 +13,7 @@ type FlexProps = FCProps & {
   justifyContent ?: FlexJustify;
   align ?: FlexAlign;
   direction ?: FlexDirection;
+  gap ?: string;
 }
 
 function defaulted(value ?: any) { // eslint-disable-line
@@ -24,7 +25,8 @@ export const Flex : React.FC<FlexProps> = ({
   className, 
   justifyContent, 
   align, 
-  direction
+  direction,
+  gap
   }) => {
     return ( 
     <div className={className} style={{
@@ -32,6 +34,7 @@ export const Flex : React.FC<FlexProps> = ({
       alignItems: defaulted(align),
       flexDirection: defaulted(direction),
       display: 'flex',
+      gap: defaulted(gap),
     }}>
       {children}
     </div> )
