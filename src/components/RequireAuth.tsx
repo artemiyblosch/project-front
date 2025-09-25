@@ -1,4 +1,4 @@
-import { authCall } from "@/lib/auth";
+import { authCall } from "@/lib/calls";
 import { FCProps } from "@/lib/FCProps";
 import { getLocal } from "@/lib/localstorage";
 import { traverse } from "@/lib/traverse";
@@ -10,7 +10,7 @@ export const RequireAuth : React.FC<FCProps> = ( {children} ) => {
 
     React.useEffect(() => {
         if (!authData) traverse('/login')
-        authCall(authData).catch(() => traverse('/login'))
+        authCall(JSON.parse(authData)).catch(() => traverse('/login'))
     }, [authData]);
 
     return children;

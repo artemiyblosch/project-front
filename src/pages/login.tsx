@@ -1,25 +1,28 @@
 import { Flex } from '@/components';
-import { authCall } from '@/lib/auth';
+import { APICall, authCall } from '@/lib/calls';
 import { removeLocal, setLocal } from '@/lib/localstorage';
 import { traverse } from '@/lib/traverse';
 import Form from 'next/form'
 import React from 'react';
 import styles from './login.module.scss'
+import { APICallFromForm } from '@/lib/forms';
+import Link from 'next/link';
 
-function auth(formData : FormData) {
-    const name = formData.get("name")?.toString();
-    const password = formData.get("password")?.toString();
-    if(name == null || password == null) return;
-    
-    authCall({name,password})
-    .then((response) => {
-        response.text().then((r)=>{
-            setLocal("User",r);
-            traverse('/');
-        })
-    })
-    .catch(() => alert("NO!"))
-}
+const auth = new APICallFromForm(
+    ["tag","password"],
+    authCall as APICall
+)
+.addResponseTo(200,(res) => {
+    setLocal("User",res);
+    traverse('/');
+})
+.addResponseTo(400, () => {
+    alert("400");
+})
+.addResponseTo(403, () => {
+    alert("403");
+})
+.callable();
 
 export default function LoginPage() {
     React.useEffect(()=>{
@@ -31,11 +34,11 @@ export default function LoginPage() {
         <h1>Login</h1>
         <Form action={auth}>   
             <Flex direction='column' gap="10px">
-                <input name="name" required/>
+                <input name="tag" required/>
                 <input name="password" type="password" required/>
-                <input name="csrfmiddlewaretoken" type="hidden"/>
                 <button type="submit">Submit</button>
             </Flex>
         </Form>
+        <Link href="/reg">No account? Register!</Link>
     </div>)
 }
