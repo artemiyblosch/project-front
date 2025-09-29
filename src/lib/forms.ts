@@ -5,7 +5,7 @@ export function getKey(formData : FormData, key : string) {
 }
 
 export function formToApi(formData : FormData, keys : string[], call : APICall) : Promise<Response> | null {
-    let obj : any = {}; //eslint-disable-line
+    const obj : any = {}; 
     for(const key of keys) {
         if(getKey(formData,key) == null) return null;
         obj[key] = getKey(formData,key);
@@ -43,7 +43,7 @@ export class APICallFromForm {
 
     callable() {
     return (formData : FormData | object) => {
-        let obj : any = {}; //eslint-disable-line
+        let obj : any = {};
         if (formData instanceof FormData) {
         for(const key of this.keys) {
             if(getKey(formData,key) == null) {

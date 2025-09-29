@@ -19,11 +19,11 @@ export default function Page() {
     }).callable()
 
     const user = JSON.parse(getLocal("User"));
-    React.useEffect(()=> getGs({pk: user?.pk}),[]);//eslint-disable-line
+    React.useEffect(()=> getGs({pk: user?.pk}),[]);
 
     return <RequireAuth>
         <Flex direction="column" gap="20px">
-            {Object.values(groups).map((a : any/*eslint-disable-line*/) => <div key={1}>
+            {Object.values(groups).map((a : any) => <div key={1}>
                 <h2>{a?.name ?? "??"}</h2>
             </div>)}
         </Flex>

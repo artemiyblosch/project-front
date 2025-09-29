@@ -16,7 +16,7 @@ type FlexProps = FCProps & {
   gap ?: string;
 }
 
-function defaulted(value ?: any) { // eslint-disable-line
+function defaulted(value ?: any) { 
   return (value == null ? 'unset' : value);
 }
 

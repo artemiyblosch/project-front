@@ -20,6 +20,12 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": 0,
+      "react-hooks/exhaustive-deps": 0,
+    },
+  }
 ];
 
 export default eslintConfig;
