@@ -2,18 +2,18 @@ import Form from 'next/form'
 import styles from './login.module.scss'
 import { Flex } from '@/components'
 import { APICall, createUser } from '@/lib/calls'
-import { APICallFromForm } from '@/lib/forms'
+import { APIQuery } from '@/lib/forms'
 import { setLocal } from '@/lib/localstorage'
-import { traverse } from '@/lib/traverse'
 import Link from 'next/link' 
+import { redirect } from 'next/navigation'
 
-const create = new APICallFromForm(
+const create = new APIQuery(
     ["name","password","tag"],
     createUser as APICall
 )
 .addResponseTo(200, (r) => {
     setLocal("User",r);
-    traverse("/")
+    redirect("/")
 })
 .addResponseTo(400, () => alert("400"))
 .callable();

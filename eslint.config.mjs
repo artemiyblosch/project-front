@@ -24,6 +24,7 @@ const eslintConfig = [
     rules: {
       "@typescript-eslint/no-explicit-any": 0,
       "react-hooks/exhaustive-deps": 0,
+      "react/jsx-key": 0,
     },
   }
 ];

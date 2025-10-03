@@ -1,20 +1,20 @@
 import { Flex } from '@/components';
 import { APICall, authCall } from '@/lib/calls';
 import { removeLocal, setLocal } from '@/lib/localstorage';
-import { traverse } from '@/lib/traverse';
 import Form from 'next/form'
 import React from 'react';
 import styles from './login.module.scss'
-import { APICallFromForm } from '@/lib/forms';
+import { APIQuery } from '@/lib/forms';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-const auth = new APICallFromForm(
+const auth = new APIQuery(
     ["tag","password"],
     authCall as APICall
 )
 .addResponseTo(200,(res) => {
     setLocal("User",res);
-    traverse('/');
+    redirect('/');
 })
 .addResponseTo(400, () => {
     alert("400");

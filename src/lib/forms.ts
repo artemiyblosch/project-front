@@ -14,12 +14,13 @@ export function formToApi(formData : FormData, keys : string[], call : APICall) 
 }
 
 type StatusResponse = (r : string) => void;
-export class APICallFromForm {
+export class APIQuery {
     keys : string[];
     apiCall : APICall;
     statusResponses : [number, StatusResponse][] = [];
     onFailure : StatusResponse = (e) => alert("???: "+e);
     onNull : StatusResponse = (key) => alert("no "+key);
+    additionalParams : object = {};
 
     constructor(keys : string[], apiCall : APICall) {
         this.keys = keys;
@@ -33,6 +34,11 @@ export class APICallFromForm {
 
     addOnFailure(c : StatusResponse) {
         this.onFailure = c;
+        return this;
+    }
+
+    addParams(params : object) {
+        this.additionalParams = params;
         return this;
     }
 
@@ -53,7 +59,8 @@ export class APICallFromForm {
             obj[key] = getKey(formData,key);
         }}
         else obj = formData;
-
+        obj = {...obj, ...this.additionalParams};
+        
         this.apiCall(obj)
         .then((response : Response) => {
             const status = response.status;
