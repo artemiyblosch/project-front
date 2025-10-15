@@ -47,10 +47,11 @@ export default function Page() {
     <><Flex 
         direction="column" 
         className={styles.flex}
+        align="flex-start"
     >
         { messages.map( (m : any) => <Message 
             text = {m?.text} 
-            own = {m?.owner?.tag === user?.pk}
+            own = {m?.owner?.tag === user?.tag}
         /> )}
     </Flex>
     <div className={styles.texting}>

@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .ownMessage {
     background: linear-gradient(to right in hsl, #7F4CB5, #6B5DC9);
+    left: 10px;
 }
 
 .alienedMessage, .ownMessage {
-    align-self: right;
+    position: relative;
     padding: 10px;
     display: inline-block;
     font-weight: 400;
@@ -19,4 +20,5 @@
 
 .alienedMessage {
     background: #363849;
+    left: 10px;
 }

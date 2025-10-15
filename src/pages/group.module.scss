@@ -1,10 +1,11 @@
 
 .texting {
-    position: sticky;
-    bottom: 10px;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    width: auto !important;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .flex {
@@ -14,11 +15,18 @@
 body {
     background-color: #181A1E;
 }
+
 .form input {
     background-color: #232629;
     color: #616369;
     height: 60px;
     border: none;
-    border-radius: 15px;
-    width: auto;
+    width: 100%;
+    font-size: 24px;
+}
+
+.form button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
 }
