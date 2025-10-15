@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.ownMessage {
+    background: linear-gradient(to right in hsl, #7F4CB5, #6B5DC9);
+}
+
+.alienedMessage, .ownMessage {
+    align-self: right;
+    padding: 10px;
+    display: inline-block;
+    font-weight: 400;
+    font-family: 'Balsamiq Sans',sans-serif;
+    max-width: 20vw;
+    color: white;
+    font-size: 24px;
+    word-wrap: break-word;
+    margin: 5px;
+    border-radius: 30px;
+}
+
+.alienedMessage {
+    background: #363849;
+}

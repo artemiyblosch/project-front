@@ -6,6 +6,7 @@ import Form from "next/form";
 import { redirect, useSearchParams } from "next/navigation"
 import React from "react";
 import styles from './group.module.scss'
+import { Message } from "@/components/Message/Message";
 
 export default function Page() {
     'use client'
@@ -26,6 +27,7 @@ export default function Page() {
         .callable()({group: group})
     }
     React.useEffect(() => {
+        updateMessages();
         setInterval(updateMessages,10000);
     }, [group])
 
@@ -42,19 +44,20 @@ export default function Page() {
     .callable();
 
     return (
-    <><Flex direction="column">
-        {messages.map((m : any) => {
-            return <div>
-                <h5>{m?.owner?.name}</h5>
-                <p>{m?.text}</p>
-
-            </div>
-        })}
+    <><Flex 
+        direction="column" 
+        className={styles.flex}
+    >
+        { messages.map( (m : any) => <Message 
+            text = {m?.text} 
+            own = {m?.owner?.tag === user?.pk}
+        /> )}
     </Flex>
     <div className={styles.texting}>
     <Form 
         action={(formData) => text(formData)} 
         id="Form"
+        className={styles.form}
     >
         <input name="text"/>
         <button type="submit">Text</button>
