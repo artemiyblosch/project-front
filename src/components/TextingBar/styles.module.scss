@@ -1,0 +1,23 @@
+.texting {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.form input {
+    background-color: #232629;
+    color: #616369;
+    height: 60px;
+    border: none;
+    width: 100%;
+    font-size: 24px;
+}
+
+.form button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+}
