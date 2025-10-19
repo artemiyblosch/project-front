@@ -5,20 +5,22 @@ import { APICall, createUser } from '@/lib/calls'
 import { APIQuery } from '@/lib/forms'
 import { setLocal } from '@/lib/localstorage'
 import Link from 'next/link' 
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-const create = new APIQuery(
+export default function Page() {
+    const router = useRouter();
+    const create = new APIQuery(
     ["name","password","tag"],
     createUser as APICall
 )
-.addResponseTo(200, (r) => {
-    setLocal("User",r);
-    redirect("/")
-})
-.addResponseTo(400, () => alert("400"))
-.callable();
+    .addResponseTo(200, (r) => {
+        setLocal("User",r);
+        router.push("/")
+    })
+    .addResponseTo(400, () => alert("400"))
+    .callable();
 
-export default function Page() {
+
     return (
     <div className={styles.container}>
         <h1>Registration</h1>

@@ -6,25 +6,27 @@ import React from 'react';
 import styles from './login.module.scss'
 import { APIQuery } from '@/lib/forms';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
-const auth = new APIQuery(
+export default function LoginPage() {
+    const router = useRouter();
+    const auth = new APIQuery(
     ["tag","password"],
     authCall as APICall
 )
-.addResponseTo(200,(res) => {
-    setLocal("User",res);
-    redirect('/');
-})
-.addResponseTo(400, () => {
-    alert("400");
-})
-.addResponseTo(403, () => {
-    alert("403");
-})
-.callable();
+    .addResponseTo(200,(res) => {
+        setLocal("User",res);
+        router.push('/');
+    })
+    .addResponseTo(400, () => {
+        alert("400");
+    })
+    .addResponseTo(403, () => {
+        alert("403");
+    })
+    .callable();
 
-export default function LoginPage() {
+
     React.useEffect(()=>{
         removeLocal("User")
     },[]);

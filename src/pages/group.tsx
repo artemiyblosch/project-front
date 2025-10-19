@@ -3,13 +3,23 @@ import { Flex, Message, TextingBar } from "@/components";
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
 
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import React from "react";
 import styles from './group.module.scss'
 
 
 export default function Page() {
     'use client'
+    const router = useRouter();
+    const updateMessages_ = () => (
+        updateMessages(
+            group ?? "",
+            setMessages,
+            ()=> router.push("/")
+        )
+    )
+
+
     const searchParams = useSearchParams();
     const group = searchParams?.get("gpk");
     const [messages,setMessages] = React.useState<any>([]);
@@ -17,8 +27,8 @@ export default function Page() {
     const user = JSON.parse(getLocal("User"));
 
     React.useEffect(() => {
-        updateMessages(group ?? "",setMessages)();
-        setInterval(updateMessages,10000);
+        updateMessages_();
+        setInterval(updateMessages_,10000);
     }, [group])
 
     return (

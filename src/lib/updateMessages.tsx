@@ -1,12 +1,10 @@
-import { redirect } from "next/navigation";
 import { APICall, getMessages } from "./calls";
 import { APIQuery } from "./forms";
-
-const getBack = () => redirect('/');
 
 export const updateMessages = (
     group : string,
     setMessages : (a : any) => void,
+    getBack : () => void,
 ) => {
     return () => new APIQuery(
         ["group"],
