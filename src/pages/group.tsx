@@ -6,6 +6,7 @@ import { updateMessages } from "@/lib/updateMessages";
 import { useRouter, useSearchParams } from "next/navigation"
 import React from "react";
 import styles from './group.module.scss'
+import { ChatBackdrop } from "@/assets/Bg";
 
 
 export default function Page() {
@@ -32,20 +33,23 @@ export default function Page() {
     }, [group])
 
     return (
-    <><Flex 
-        direction="column" 
-        className={styles.flex}
-        align="flex-start"
-    >
-        { messages.map( (m : any) => <Message 
-            text = {m?.text} 
-            own = {m?.owner?.tag === user?.tag}
-        /> )}
-    </Flex>
-    <TextingBar 
-        group={group ?? ""} 
-        user={user} 
-        setMessages={setMessages}
-    /> 
-    </>)
+    <Flex align="stretch" className={styles.main}>
+    <ChatBackdrop>
+        <Flex 
+            direction="column" 
+            className={styles.flex}
+            align="flex-start"
+        >
+            { messages.map( (m : any) => <Message 
+                text = {m?.text} 
+                own = {m?.owner?.tag === user?.tag}
+            /> )}
+        </Flex>
+        <TextingBar 
+            group={group ?? ""} 
+            user={user} 
+            setMessages={setMessages}
+        /> 
+    </ChatBackdrop>
+    </Flex>)
 }

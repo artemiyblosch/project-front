@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import { APIQuery } from "@/lib/forms";
 import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
+import { useRouter } from "next/navigation";
 
 export type TextingBarProps = {
     group : string;
@@ -15,6 +16,7 @@ export const TextingBar : React.FC<TextingBarProps> = ({
     user,
     setMessages
 }) => {
+    const router = useRouter();
     const text = new APIQuery(
         ["text"],
         textingCall as APICall
@@ -24,8 +26,14 @@ export const TextingBar : React.FC<TextingBarProps> = ({
         pk : user?.pk,
         password: user?.password
     })
-    .addResponseTo(200,updateMessages(group,setMessages))
+    .addResponseTo(200,updateMessages(
+        group,
+        setMessages,
+        () => router.push("/")
+    ))
     .callable();
+
+
     return (
     <div className={styles.texting}>
         <Form 
