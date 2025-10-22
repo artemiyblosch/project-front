@@ -1,4 +1,6 @@
-export default function Icon(color : string) {
+type IconProps = { color: string };
+
+export const UserIcon : React.FC<IconProps> = ({color}) => {
     return (
     <svg width="389" height="88" viewBox="0 0 389 88" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="44" cy="44" r="44" fill={color}/>

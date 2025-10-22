@@ -1,8 +1,7 @@
 .texting {
-    position: absolute;
-    bottom: 0px;
+    position: relative;
+    top: calc(100vh - 80px);
     left: 0px;
-    margin: 0px;
     width: 100%;
     overflow-x: hidden;
 }
@@ -12,12 +11,14 @@
     color: #616369;
     height: 60px;
     border: none;
-    width: 100%;
+    width: calc(100% - 80px);
     font-size: 24px;
+    margin-left: 40px;
+    border-radius: 15px;
 }
 
 .form button {
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 80px;
 }
