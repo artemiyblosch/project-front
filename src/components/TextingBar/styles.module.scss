@@ -6,6 +6,12 @@
     overflow-x: hidden;
 }
 
+.destyle {
+    background: none;
+    border: none;
+    border-radius: none;
+}
+
 .form input {
     background-color: #232629;
     color: #616369;
@@ -15,10 +21,17 @@
     font-size: 24px;
     margin-left: 40px;
     border-radius: 15px;
+    padding-left: 10px;
 }
 
 .form button {
     position: absolute;
-    top: 50%;
-    right: 80px;
+    top: calc(50% - 18.5px);
+    right: 50px;
+    transition: all 0.5s ease;
+}
+
+.form button:hover {
+    filter: brightness(200%);
+    transition: all 0.5s ease;
 }

@@ -4,6 +4,7 @@ import { APIQuery } from "@/lib/forms";
 import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 import { useRouter } from "next/navigation";
+import { TextingIcon } from "@/assets";
 
 export type TextingBarProps = {
     group : string;
@@ -37,12 +38,12 @@ export const TextingBar : React.FC<TextingBarProps> = ({
     return (
     <div className={styles.texting}>
         <Form 
-            action={(formData) => text(formData)} 
+            action={(formData) => formData.get("text") ? text(formData) : void 1} 
             id="Form"
             className={styles.form}
         >
-            <input name="text"/>
-            <button type="submit">Text</button>
+            <input name="text" placeholder="Напишите сообщение..."/>
+            <button type="submit" className={styles.destyle}><TextingIcon/></button>
         </Form>
     </div>
     )

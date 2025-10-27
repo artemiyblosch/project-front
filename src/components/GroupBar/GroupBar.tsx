@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex } from "../Flex";
-import { UserIcon } from "@/assets/icons/UserIcon";
+import { UserIcon } from "@/assets";
 import styles from './styles.module.scss';
 import { APICall, getGroups } from "@/lib/calls";
 import { APIQuery } from "@/lib/forms";
@@ -19,7 +19,7 @@ export const GroupBar : React.FC = () => {
     }).callable()
 
     const user = JSON.parse(getLocal("User"));
-    React.useEffect(()=> getGs({pk: user?.pk}),[]);
+    React.useEffect(() => getGs({pk: user?.pk}),[]);
 
     return (
         <Flex 

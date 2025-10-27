@@ -6,7 +6,7 @@ import { updateMessages } from "@/lib/updateMessages";
 import { useRouter, useSearchParams } from "next/navigation"
 import React from "react";
 import styles from './group.module.scss'
-import { ChatBackdrop } from "@/assets/Bg";
+import { ChatBackdrop } from "@/assets";
 
 
 export default function Page() {
