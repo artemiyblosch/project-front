@@ -34,3 +34,8 @@ export type GetMessagesProps = {
     group : number;
 }
 export const getMessages = callTo<GetMessagesProps>('/api/messages/gfg');
+
+export type GetGroupProps = {
+    pk : number;
+}
+export const getGroup = callTo<GetGroupProps>('/api/groups/pk');
