@@ -1,5 +1,24 @@
 .bar {
     width: 100%;
-    background: #181A1E;
-    height: 100px;
+    background: #16181b;
+    height: 72px;
+}
+
+.gtitle {
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.gstat {
+    font-family: 'Inter', sans-serif;
+    color: #8F8F8F;
+}
+
+.icon {
+    transform: scale(0.6);
+}
+
+.comebackLink {
+    margin-left: 10px;
 }

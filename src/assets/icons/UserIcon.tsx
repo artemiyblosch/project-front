@@ -1,8 +1,9 @@
-type IconProps = { color: string };
+type IconProps = { color: string, className ?: string };
 
-export const UserIcon : React.FC<IconProps> = ({color}) => {
+
+export const UserIcon : React.FC<IconProps> = ({color, className}) => {
     return (
-    <div style={{"width": "88px", overflow: "hidden"}}><svg width="389" height="88" viewBox="0 0 389 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className={className} style={{"width": "88px", overflow: "hidden"}}><svg width="389" height="88" viewBox="0 0 389 88" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="44" cy="44" r="44" fill={color}/>
         <path d="M15.7837 34.3055C16.3175 30.3902 19.2778 27.243 23.1429 26.4211C38.1321 23.2338 49.1417 23.1271 65.7801 26.4965C69.6563 27.2815 72.6668 30.3836 73.2294 34.2983C74.2246 41.2234 74.2787 46.7381 73.2493 53.8257C72.6863 57.7021 69.691 60.7662 65.8487 61.5274C51.001 64.4688 39.9744 64.4036 23.288 61.4092C19.3492 60.7024 16.2173 57.6272 15.6579 53.6648C14.7369 47.1416 14.7866 41.6194 15.7837 34.3055Z" fill="#D9D9D9"/>
         <rect x="25.1064" y="36.1849" width="10.1439" height="15.6769" rx="4" fill={color}/>

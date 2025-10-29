@@ -1,6 +1,7 @@
 import { ChatBackdrop } from "@/assets"
 import { TextingBar } from "../TextingBar"
 import { Message } from "../Message"
+import styles from './styles.module.scss'
 
 type ChatProps = {
     messages : any;
@@ -13,16 +14,18 @@ export const Chat : React.FC<ChatProps> = ({
     group, user, setMessages, messages
 }) => {
     return (
-    <ChatBackdrop>
-        <TextingBar 
-            group={group} 
-            user={user} 
-            setMessages={setMessages}
-        />
+    <>
+    <ChatBackdrop className={styles.bg}>
             { messages.map( (m : any) => <Message
                 text = {m?.text} 
                 own = {m?.owner?.tag === user?.tag}
             /> )}
     </ChatBackdrop>
+    <TextingBar 
+        group={group} 
+        user={user} 
+        setMessages={setMessages}
+    />
+    </>
     )
 }

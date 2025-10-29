@@ -1,9 +1,10 @@
-import { UserIcon } from "@/assets"
+import { ComeBackIcon, UserIcon } from "@/assets"
 import { Flex } from "../Flex"
 import styles from './styles.module.scss'
 import { APIQuery } from "@/lib/forms";
 import { APICall, getGroup } from "@/lib/calls";
 import React from "react";
+import Link from "next/link";
 
 type GIBProps = {
     color: string;
@@ -22,17 +23,27 @@ export const GroupInfoBar : React.FC<GIBProps> = ({
     )
     .addResponseTo(200, (r) => setGName(JSON.parse(r).name))
     .addResponseTo(404, () => alert("OKAK"))
-    .addOnFailure(() => alert("???"))
+    .addOnFailure((e) => alert(`???: ${e}`))
     .callable();
 
     React.useEffect(() => getGroupName({pk: group}),[]);
 
     return (
-    <Flex className={styles.bar}>
-        <UserIcon color={color}/>
+    <Flex
+        gap="10px"
+        align="center"
+        className={styles.bar}
+    >
+        <Link 
+            href="/" 
+            className={styles.comebackLink}
+        >
+            <ComeBackIcon/>
+        </Link>
+        <UserIcon color={color} className={styles.icon}/>
         <Flex direction="column">
-            <span>{groupName}</span>
-            <span>в сети</span>
+            <span className={styles.gtitle}>{groupName}</span>
+            <span className={styles.gstat}>в сети</span>
         </Flex>
     </Flex>
     )

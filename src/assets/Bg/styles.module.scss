@@ -3,6 +3,6 @@
 	background-size: 100% auto;
 	background-repeat: no-repeat;
 	width: 100%;
-	height: calc(100vh - 100px);
-	overflow-y: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
