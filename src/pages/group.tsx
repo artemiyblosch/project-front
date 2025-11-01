@@ -7,6 +7,7 @@ import { updateMessages } from "@/lib/updateMessages";
 import { /*useRouter,*/ useSearchParams } from "next/navigation"
 import React from "react";
 import styles from './group.module.scss'
+import { getGroupInfo } from "@/lib/groups";
 
 export default function Page() {
     'use client'
@@ -27,6 +28,11 @@ export default function Page() {
         setInterval(updateMessages_, 10000);
     }, []);
 
+    const [gVibe, setGVibe] = React.useState<number>(3);
+    const [gName, setGName] = React.useState<string>("");
+    
+    React.useEffect(() => getGroupInfo(group,setGName,setGVibe), []);
+
     return (
     <Flex align="stretch" className={styles.main}>
         <GroupBar/>
@@ -37,13 +43,14 @@ export default function Page() {
         >
             <GroupInfoBar 
                 color="#33f03dff"
-                group={group}
+                name={gName}
             />
             <Chat 
                 messages={messages}
                 setMessages={setMessages}
                 group={group}
                 user={user}
+                vibes={gVibe}
             />
         </Flex>
     </Flex>)
