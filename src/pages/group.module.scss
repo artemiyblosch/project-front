@@ -1,5 +1,6 @@
 .flex {
     width: 100%;
+    height: 100%;
 }
 
 body {
@@ -7,4 +8,8 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
     width: 100vw;
+}
+
+.main {
+    height: 100vh;
 }
