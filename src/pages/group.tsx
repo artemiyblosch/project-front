@@ -12,14 +12,14 @@ export default function Page() {
     'use client'
     const [messages,setMessages] = React.useState<any>([]);
     const searchParams = useSearchParams();
-    const group = searchParams?.get("gpk") ?? "";
+    const group : string = searchParams?.get("gpk") ?? "3"; //BUG MB
     const user = JSON.parse(getLocal("User"));
 
     const router = useRouter();
     const updateMessages_ = updateMessages(
         group,
         setMessages,
-        () => router.push("/")
+        () => /*router.push('/')*/1
     )
 
     React.useEffect(() => {

@@ -19,6 +19,7 @@ export const Chat : React.FC<ChatProps> = ({
             { messages.map( (m : any) => <Message
                 text = {m?.text} 
                 own = {m?.owner?.tag === user?.tag}
+                type = {m?.type}
             /> )}
     </ChatBackdrop>
     <TextingBar 

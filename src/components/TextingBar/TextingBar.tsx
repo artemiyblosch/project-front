@@ -18,27 +18,28 @@ export const TextingBar : React.FC<TextingBarProps> = ({
     setMessages
 }) => {
     const router = useRouter();
-    const text = new APIQuery(
+    const text = (text : FormData) => new APIQuery(
         ["text"],
         textingCall as APICall
     )
     .addParams({
         group_pk: group,
         pk : user?.pk,
-        password: user?.password
+        password: user?.password,
+        type : +!text.get("text")
     })
     .addResponseTo(200,updateMessages(
         group,
         setMessages,
-        () => router.push("/")
+        () => /*router.push("/")*/1
     ))
-    .callable();
+    .callable()(text);
 
 
     return (
     <div className={styles.texting}>
         <Form 
-            action={(formData) => formData.get("text") ? text(formData) : void 1} 
+            action={(formData) => formData.get("text") ? text(formData) : text(formData)} 
             id="Form"
             className={styles.form}
         >
