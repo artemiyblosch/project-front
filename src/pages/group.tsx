@@ -4,7 +4,7 @@ import { Flex, GroupBar,
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { /*useRouter,*/ useSearchParams } from "next/navigation"
 import React from "react";
 import styles from './group.module.scss'
 
@@ -15,7 +15,7 @@ export default function Page() {
     const group : string = searchParams?.get("gpk") ?? "3"; //BUG MB
     const user = JSON.parse(getLocal("User"));
 
-    const router = useRouter();
+    //const router = useRouter();
     const updateMessages_ = updateMessages(
         group,
         setMessages,

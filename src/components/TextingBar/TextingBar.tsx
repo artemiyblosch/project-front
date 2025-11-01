@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { APIQuery } from "@/lib/forms";
 import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { TextingIcon } from "@/assets";
 
 export type TextingBarProps = {
@@ -17,7 +17,7 @@ export const TextingBar : React.FC<TextingBarProps> = ({
     user,
     setMessages
 }) => {
-    const router = useRouter();
+    //const router = useRouter();
     const text = (text : FormData) => new APIQuery(
         ["text"],
         textingCall as APICall
