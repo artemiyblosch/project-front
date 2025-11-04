@@ -1,3 +1,4 @@
+import { RitmikCool, RitmikCt, RitmikNA, RitmikSad } from '@/assets/ritmik';
 import styles from './styles.module.scss'
 
 type RitmikProps = {
@@ -10,6 +11,9 @@ export const Ritmik : React.FC<RitmikProps> = ({
     vibes
 }) => {
     return <div className={`${className} ${styles.ritmik}`}>
-        {!vibes ? <p>М</p> : (vibes === 1 ? <p>К</p> : <p>О</p>)}
+        {!vibes ? <RitmikCt/>
+        : (vibes === 1 ? <RitmikCool/>
+        : (vibes === 2 ? <RitmikSad/>
+        : <RitmikNA/> ))}
     </div>
 }

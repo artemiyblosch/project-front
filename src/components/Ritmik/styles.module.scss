@@ -1,5 +1,10 @@
 .ritmik {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 6vh;
+    right: 6vw;
+}
+.ritmik svg {
+    width: 15vw;
+    min-width: 100px;
+    max-width: 200px;
 }

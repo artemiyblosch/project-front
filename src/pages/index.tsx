@@ -1,12 +1,55 @@
-import { GroupBar } from "@/components";
-import { RequireAuth } from "@/components/RequireAuth";
-import React from "react";
+import { Flex, GroupBar,
+         GroupInfoBar, Chat } from "@/components";
 
+import { getLocal } from "@/lib/localstorage";
+import { updateMessages } from "@/lib/updateMessages";
+
+import React from "react";
+import styles from './index.module.scss'
+import { getGroupInfo } from "@/lib/groups";
 
 export default function Page() {
-    'use client';
+    'use client'
+    const [messages,setMessages] = React.useState<any>([]);
+    const [group, setGroup] = React.useState<string>("2"); 
+    const user = JSON.parse(getLocal("User"));
 
-    return <RequireAuth>
-        <GroupBar/>
-    </RequireAuth>
+    //const router = useRouter();
+    const updateMessages_ = updateMessages(
+        group,
+        setMessages,
+        () => /*router.push('/')*/1
+    )
+
+    React.useEffect(() => {
+        updateMessages_();
+        setInterval(updateMessages_, 10000);
+    }, []);
+
+    const [gVibe, setGVibe] = React.useState<number>(3);
+    const [gName, setGName] = React.useState<string>("");
+    
+    React.useEffect(() => getGroupInfo(group,setGName,setGVibe), [group]);
+
+    return (
+    <Flex align="stretch" className={styles.main}>
+        <GroupBar setGroup={setGroup}/>
+        <Flex 
+                direction="column" 
+                className={styles.flex}
+                align="flex-start"
+        >
+            <GroupInfoBar 
+                color="#33f03dff"
+                name={gName}
+            />
+            <Chat 
+                messages={messages}
+                setMessages={setMessages}
+                group={group}
+                user={user}
+                vibes={gVibe}
+            />
+        </Flex>
+    </Flex>)
 }
