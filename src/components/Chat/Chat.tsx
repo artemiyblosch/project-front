@@ -10,7 +10,7 @@ type ChatProps = {
     setMessages : React.Dispatch<any>;
     group : string;
     user : any;
-    vibes : number;
+    vibes : string;
     setRitmikOpen : React.Dispatch<boolean>;
 }
 

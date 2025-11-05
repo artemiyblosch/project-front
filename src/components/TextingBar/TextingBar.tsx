@@ -27,7 +27,7 @@ export const TextingBar : React.FC<TextingBarProps> = ({
         pk : user?.pk,
         password: user?.password,
         type : +!text.get("text"),
-        vibes: +!text.get("text") ? 1 : 3,
+        vibe : /*+!text.get("text") ? "cool" : */"",
     })
     .addResponseTo(200,updateMessages(
         group,

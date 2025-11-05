@@ -23,20 +23,19 @@ export default function Page() {
             () => /*router.push('/')*/1
         );
         updateMessages_();
+        getGroupInfo(group,setGName,setGVibe);
     });
 
-    const [gVibe, setGVibe] = React.useState<number>(3);
+    const [gVibe, setGVibe] = React.useState<string>("");
     const [gName, setGName] = React.useState<string>("");
     const [ritmikOpen, setRitmikOpen] = React.useState<boolean>(false);    
-
-
-    React.useEffect(() => getGroupInfo(group,setGName,setGVibe), [group]);
 
     return (
     <>
     <RitmikModal 
         isOpen={ritmikOpen} 
         setIsOpen={setRitmikOpen}
+        vibes={gVibe}
     />
     <Flex align="stretch" className={styles.main}>
         <GroupBar setGroup={setGroup} />
