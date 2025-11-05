@@ -1,0 +1,30 @@
+.main {
+    background: #242B4D;
+    border-radius: 20px;
+    width: 50vw;
+    height: 55vh;
+    position: absolute;
+    top: 22.5vh;
+    left: 25vw;
+}
+
+.close {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    background: none;
+    filter: brightness(0.75);
+    transition: all 0.5s ease;
+    border: none;
+}
+
+.close:hover {
+    filter: brightness(1);
+    transition: all 0.5s ease;
+}
+
+.ritmikSidebar {
+    background-color: #2F4061;
+    width: 40%;
+    border-radius: 20px 0 0 20px;
+}

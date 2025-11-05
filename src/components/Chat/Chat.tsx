@@ -11,15 +11,21 @@ type ChatProps = {
     group : string;
     user : any;
     vibes : number;
+    setRitmikOpen : React.Dispatch<boolean>;
 }
 
 export const Chat : React.FC<ChatProps> = ({
-    group, user, setMessages, messages, vibes
+    group, user, setMessages, messages, vibes, setRitmikOpen
 }) => {
 
     return (
     <>
-    <Ritmik vibes={vibes}/>
+    <Ritmik 
+        vibes={vibes}
+        setRitmikOpen={setRitmikOpen}
+        className={styles.ritmik}
+    />
+
     <ChatBackdrop className={styles.bg}>
             { messages.map( (m : any) => <Message
                 text = {m?.text} 

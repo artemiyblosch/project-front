@@ -20,9 +20,13 @@ body {
 }
 
 .glink {
-    margin-left: 20px;
+    margin-left: 5px;
     color: #BCBEC7;
     text-decoration: none;
     font-size: 50px;
     font-family: 'Balsamiq Sans', sans-serif;
+}
+
+.icon {
+    transform: scale(0.8);
 }

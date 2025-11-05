@@ -1,19 +1,24 @@
 import { RitmikCool, RitmikCt, RitmikNA, RitmikSad } from '@/assets/ritmik';
-import styles from './styles.module.scss'
 
 type RitmikProps = {
     className ?: string;
     vibes : number;
+    setRitmikOpen : React.Dispatch<boolean>;
 }
 
 export const Ritmik : React.FC<RitmikProps> = ({
     className,
-    vibes
+    vibes,
+    setRitmikOpen
 }) => {
-    return <div className={`${className} ${styles.ritmik}`}>
+    return (
+    <div 
+        className={className}
+        onClick={()=>setRitmikOpen(true)}
+    >
         {!vibes ? <RitmikCt/>
         : (vibes === 1 ? <RitmikCool/>
         : (vibes === 2 ? <RitmikSad/>
         : <RitmikNA/> ))}
-    </div>
+    </div>)
 }

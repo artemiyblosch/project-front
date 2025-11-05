@@ -10,7 +10,9 @@ type _ = {
     setGroup : React.Dispatch<string>;
 }
 
-export const GroupBar : React.FC<_> = ({setGroup}) => {
+export const GroupBar : React.FC<_> = ({
+    setGroup,
+}) => {
     const [groups,setGroups] = React.useState({});
 
     const getGs = new APIQuery(
@@ -32,12 +34,12 @@ export const GroupBar : React.FC<_> = ({setGroup}) => {
         >
             <h1 className={styles.title}>Чаты</h1>
             {Object.values(groups).map((a : any) => (
-            <div onClick={() => setGroup(a?.pk)}>
-                <Flex justifyContent="flex-start">
-                <UserIcon color="#aa2daaff"/>
-                <span className={styles.glink}>{a?.name}</span>
-            </Flex>
-            </div>
+                <div onClick={() => setGroup(a?.pk+"")}>
+                    <Flex justifyContent="flex-start">
+                        <UserIcon color="#aa2daaff" className={styles.icon}/>
+                        <span className={styles.glink}>{a?.name}</span>
+                    </Flex>
+                </div>
             ))}
         </Flex>
     );
