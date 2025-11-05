@@ -2,7 +2,7 @@ import React from "react";
 
 type _ = {
     percentage : number;
-    className : string;
+    className ?: string;
     text : string;
 }
 

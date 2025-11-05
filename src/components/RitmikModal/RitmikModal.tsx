@@ -4,15 +4,17 @@ import styles from './styles.module.scss'
 import { Flex } from "../Flex";
 import { CloseIcon } from "@/assets";
 import { Ritmik } from "../Ritmik/Ritmik";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 
 type _ = {
     isOpen : boolean;
     setIsOpen : React.Dispatch<boolean>;
-    vibes : string;
+    mvibe : string;
+    vibes : any;
 }
 
 export const RitmikModal : React.FC<_> = ({
-    isOpen, setIsOpen, vibes
+    isOpen, setIsOpen, mvibe, vibes
 }) => {
     return <Modal isOpen={isOpen}>
         <Flex className={styles.main} align="stretch">
@@ -29,7 +31,7 @@ export const RitmikModal : React.FC<_> = ({
             >
                 <Ritmik 
                     setRitmikOpen={()=>1}
-                    vibes={vibes}
+                    vibes={mvibe}
                     className={styles.ritmik}
                 />
             </Flex>
@@ -37,7 +39,18 @@ export const RitmikModal : React.FC<_> = ({
                 direction="column"
                 align="center"
             >
-
+                <ProgressBar 
+                    percentage={+vibes.ct}
+                    text={`до смены облика: ${vibes[mvibe]+20-vibes.ct}`}
+                />
+                <ProgressBar 
+                    percentage={+vibes.cool}
+                    text={`до смены облика: ${vibes[mvibe]+20-vibes.cool}`}
+                />
+                <ProgressBar 
+                    percentage={+vibes.sad}
+                    text={`до смены облика: ${vibes[mvibe]+20-vibes.sad}`}
+                />
             </Flex>
         </Flex>
     </Modal>
