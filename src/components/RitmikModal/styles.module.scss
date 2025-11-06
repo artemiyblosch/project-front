@@ -8,17 +8,19 @@
     left: 25vw;
 }
 
-.close {
-    position: absolute;
-    right: 40px;
-    top: 40px;
+.button {
     background: none;
     filter: brightness(0.75);
     transition: all 0.5s ease;
     border: none;
 }
+.close {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}
 
-.close:hover {
+.button:hover {
     filter: brightness(1);
     transition: all 0.5s ease;
 }
@@ -31,4 +33,17 @@
 
 .ritmik {
     transform: scale(0.8);
+}
+
+.pbar {
+    border: 5px solid #C3C3C3;
+    background-color: #2F4061;
+    border-radius: 999px;
+    width: 400px;
+    overflow: hidden;
+}
+
+.pbar p {
+    background-color: #44549D;
+    text-wrap: nowrap;
 }

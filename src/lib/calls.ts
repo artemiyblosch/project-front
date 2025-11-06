@@ -39,3 +39,11 @@ export type GetGroupProps = {
     pk : number;
 }
 export const getGroup = callTo<GetGroupProps>('/api/groups/pk');
+
+export type SetVibesProps = {
+    ct : number;
+    cool : number;
+    sad : number;
+    pk : number;
+}
+export const setVibes = callTo<SetVibesProps>('/api/groups/set');

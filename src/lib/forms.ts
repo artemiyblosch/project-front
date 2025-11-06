@@ -18,7 +18,7 @@ export class APIQuery {
     keys : string[];
     apiCall : APICall;
     statusResponses : [number, StatusResponse][] = [];
-    onFailure : StatusResponse = (e) => alert("???: "+e);
+    onFailure : StatusResponse = (e) => console.log("???: "+e);
     onNull : StatusResponse = (key) => alert("no "+key);
     additionalParams : object = {};
 

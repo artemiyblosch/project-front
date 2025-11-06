@@ -15,16 +15,15 @@ export default function Page() {
     const [group, setGroup] = React.useState<string>("2"); 
     const user = JSON.parse(getLocal("User"));
     //const router = useRouter();
-
-    React.useEffect(() => {
-        const updateMessages_ = updateMessages(
+    const update = () => {
+        updateMessages(
             group,
             setMessages,
             () => /*router.push('/')*/1
-        );
-        updateMessages_();
+        )();
         getGroupInfo(group,setGName,setGVibe,setVibes);
-    });
+    }
+    React.useEffect(update);
 
     const [gVibe, setGVibe] = React.useState<string>("");
     const [gName, setGName] = React.useState<string>("");
@@ -37,6 +36,7 @@ export default function Page() {
         setIsOpen={setRitmikOpen}
         mvibe={gVibe}
         vibes={vibes}
+        group={group}
     />
     <Flex align="stretch" className={styles.main}>
         <GroupBar setGroup={setGroup} />
