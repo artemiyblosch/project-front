@@ -1,3 +1,4 @@
+import { VoiceMessageIcon } from "@/assets";
 import styles from "./styles.module.scss"
 
 export type MessageProps = {
@@ -16,7 +17,7 @@ export const Message : React.FC<MessageProps> = ({text, own, type}) => {
     if(type) return (
         <div>
             <p className={className}>
-                <button>&gt;</button>
+                <button className={styles.vmb}><VoiceMessageIcon/></button>
             </p>
         </div>
     )

@@ -22,3 +22,18 @@
     background: #363849;
     left: 10px;
 }
+
+.vmb {
+    border: none;
+    background: none;
+    filter: brightness(0.8);
+    transition: all 0.5s ease;
+
+    &:hover {
+        filter: brightness(1);
+    }
+
+    svg {
+        width: 45px;
+    }
+}

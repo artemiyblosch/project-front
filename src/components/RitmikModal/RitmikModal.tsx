@@ -6,6 +6,7 @@ import { CloseIcon, SliderIcon } from "@/assets";
 import { Ritmik } from "../Ritmik/Ritmik";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { SliderModal } from "../SliderModal";
+import { Grid } from "../Grid";
 
 type _ = {
     isOpen : boolean;
@@ -40,24 +41,35 @@ export const RitmikModal : React.FC<_> = ({
                     className={styles.ritmik}
                 />
             </Flex>
-            <Flex 
-                direction="column"
-                align="center"
+            <Grid
+                templateColumns={["10px", "1fr"]}
+                templateRows={["10px", "10px", "10px"]}
+                className={styles.pcont}
+                gap={"60px"}
             >
+                <label>❤️</label>
                 <ProgressBar 
-                    percentage={+vibes.ct}
-                    text={`до смены облика: ${vibes[mvibe]+20-vibes.ct}`}
-                    className={styles.pbar}
+                    percentage={mvibe === "ct" ? 100 : vibes.ct/(vibes[mvibe]+20)*100}
+                    text={mvibe !== "ct" ? 
+                        `до смены облика: ${vibes[mvibe]+20-vibes.ct}` : 
+                        "max"}
+                    className={`${styles.pbar} ${mvibe === "ct" && styles.maxbar}`}
                 />
+                <label>😎</label>
                 <ProgressBar 
-                    percentage={+vibes.cool}
-                    text={`до смены облика: ${vibes[mvibe]+20-vibes.cool}`}
-                    className={styles.pbar}
+                    percentage={mvibe === "cool" ? 100 : vibes.cool/(vibes[mvibe]+20)*100}
+                    text={mvibe !== "cool" ? 
+                        `до смены облика: ${vibes[mvibe]+20-vibes.cool}` :
+                        "max"}
+                    className={`${styles.pbar} ${mvibe === "cool" ? styles.maxbar : ""}`}
                 />
+                <label>😭</label>
                 <ProgressBar 
-                    percentage={+vibes.sad}
-                    text={`до смены облика: ${vibes[mvibe]+20-vibes.sad}`}
-                    className={styles.pbar}
+                    percentage={mvibe === "sad" ? 100 : vibes.sad/(vibes[mvibe]+20)*100}
+                    text={mvibe !== "sad" ? 
+                        `до смены облика: ${vibes[mvibe]+20-vibes.sad}` :
+                        "max"}
+                    className={`${styles.pbar} ${mvibe === "sad" && styles.maxbar}`}
                 />
                 <button 
                     onClick={()=>setSliderModal(true)}
@@ -65,7 +77,7 @@ export const RitmikModal : React.FC<_> = ({
                 >
                     <SliderIcon/>
                 </button>
-            </Flex>
+            </Grid>
         </Flex>
     </Modal>
     <SliderModal 

@@ -13,16 +13,15 @@
     filter: brightness(0.75);
     transition: all 0.5s ease;
     border: none;
+    &:hover {
+        filter: brightness(1);
+        transition: all 0.5s ease;
+    }
 }
 .close {
     position: absolute;
     right: 40px;
     top: 40px;
-}
-
-.button:hover {
-    filter: brightness(1);
-    transition: all 0.5s ease;
 }
 
 .ritmikSidebar {
@@ -35,15 +34,39 @@
     transform: scale(0.8);
 }
 
+.pcont {
+    width: 100%;
+    align-self: center;
+    padding-left: 10px;
+    label {
+        font-size: 25px;
+    }
+}
+
+.maxbar {
+    border: 5px solid #FF3E2F !important;
+    p {
+        color: #FF3E2F !important;
+        background: #251A33 !important;
+    }
+}
+
 .pbar {
     border: 5px solid #C3C3C3;
     background-color: #2F4061;
     border-radius: 999px;
-    width: 400px;
+    width: 80%;
     overflow: hidden;
-}
-
-.pbar p {
-    background-color: #44549D;
-    text-wrap: nowrap;
+    height: 32px;
+    p {
+        background-color: #44549D;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        transform: translateY(-16px);
+        border-radius: 999px;
+        text-wrap: nowrap;
+        color: #FFF;
+        font-family: sans-serif;
+    }
 }

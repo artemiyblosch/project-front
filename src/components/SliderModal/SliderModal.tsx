@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 import { APIQuery } from "@/lib/forms";
 import { APICall, setVibes } from "@/lib/calls";
 import Form from "next/form";
+import { Grid } from "../Grid";
 
 type SliderModalProps = {
     isOpen : boolean;
@@ -38,10 +39,19 @@ export const SliderModal : React.FC<SliderModalProps> = ({
                 setIsOpen(false);
                 setParentOpen(false);
             }} className={styles.form}>
-                <input type="range" name="ct" min="0" max="100"/>
-                <input type="range" name="cool" min="0" max="100"/>
-                <input type="range" name="sad" min="0" max="100"/>
-                <input type="submit">Подтвердить</input>
+                <Grid 
+                    templateColumns={["auto","80%"]}
+                    templateRows={["60px","60px","60px"]}
+                    className={styles.grid}
+                >
+                    <label>❤️</label>
+                    <input type="range" name="ct" min="0" max="100"/>
+                    <label>😎</label>
+                    <input type="range" name="cool" min="0" max="100"/>
+                    <label>😭</label>
+                    <input type="range" name="sad" min="0" max="100"/>
+                </Grid>
+                <input type="submit" value="Подтвердить"/>
             </Form>
         </div>
     </Modal>
