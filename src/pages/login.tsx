@@ -33,14 +33,14 @@ export default function LoginPage() {
 
     return ( 
     <div className={styles.container}>
-        <h1>Login</h1>
+        <h1>Вход</h1>
         <Form action={auth}>   
             <Flex direction='column' gap="10px">
                 <input name="tag" required/>
                 <input name="password" type="password" required/>
-                <button type="submit">Submit</button>
+                <button type="submit">Войти</button>
             </Flex>
         </Form>
-        <Link href="/reg">No account? Register!</Link>
+        <Link href="/reg">Нет аккаунта?</Link>
     </div>)
 }

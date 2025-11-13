@@ -12,10 +12,12 @@ type ChatProps = {
     user : any;
     vibes : string;
     setRitmikOpen : React.Dispatch<boolean>;
+    setStickerOpen : React.Dispatch<boolean>;
 }
 
 export const Chat : React.FC<ChatProps> = ({
-    group, user, setMessages, messages, vibes, setRitmikOpen
+    group, user, setMessages, messages, 
+    vibes, setRitmikOpen, setStickerOpen
 }) => {
 
     return (
@@ -37,6 +39,7 @@ export const Chat : React.FC<ChatProps> = ({
         group={group} 
         user={user} 
         setMessages={setMessages}
+        setStickerOpen={setStickerOpen}
     />
     </>
     )

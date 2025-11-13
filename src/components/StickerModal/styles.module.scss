@@ -1,0 +1,25 @@
+.main {
+    background: #242B4D;
+    border-radius: 20px;
+    width: 50vw;
+    height: 55vh;
+    position: absolute;
+    top: 22.5vh;
+    left: 25vw;
+}
+
+.button {
+    background: none;
+    filter: brightness(0.75);
+    transition: all 0.5s ease;
+    border: none;
+    &:hover {
+        filter: brightness(1);
+        transition: all 0.5s ease;
+    }
+}
+.close {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}

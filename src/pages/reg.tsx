@@ -23,15 +23,15 @@ export default function Page() {
 
     return (
     <div className={styles.container}>
-        <h1>Registration</h1>
+        <h1>Регистрация</h1>
         <Form action={create}>   
             <Flex direction='column' gap="10px">
                 <input name="name" required/>
                 <input name="password" type="password" required/>
                 <input name="tag" required/>
-                <button type="submit">Submit</button>
+                <button type="submit">Зарегистрироваться</button>
             </Flex>
         </Form>
-        <Link href="/login">Have an account? Log in!</Link>
+        <Link href="/login">Есть аккаунт?</Link>
     </div>)
 }

@@ -4,18 +4,20 @@ import { APIQuery } from "@/lib/forms";
 import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 //import { useRouter } from "next/navigation";
-import { TextingIcon } from "@/assets";
+import { StickerIcon, TextingIcon } from "@/assets";
 
 export type TextingBarProps = {
     group : string;
     user : any;
-    setMessages : (a : any) => void;
+    setMessages : React.Dispatch<any>;
+    setStickerOpen : React.Dispatch<boolean>;
 }
 
 export const TextingBar : React.FC<TextingBarProps> = ({
     group,
     user,
-    setMessages
+    setMessages,
+    setStickerOpen
 }) => {
     //const router = useRouter();
     const text = (text : FormData) => new APIQuery(
@@ -45,8 +47,15 @@ export const TextingBar : React.FC<TextingBarProps> = ({
             className={styles.form}
         >
             <input name="text" placeholder="Напишите сообщение..."/>
-            <button type="submit" className={styles.destyle}><TextingIcon/></button>
+            <button 
+                type="submit" 
+                className={`${styles.destyle} ${styles.textBt}`}
+            ><TextingIcon/></button>
         </Form>
+        <button 
+                className={`${styles.destyle} ${styles.stickerBt}`} 
+                onClick={()=>setStickerOpen(true)}
+            ><StickerIcon/></button>
     </div>
     )
 }

@@ -47,3 +47,11 @@ export type SetVibesProps = {
     pk : number;
 }
 export const setVibes = callTo<SetVibesProps>('/api/groups/set');
+
+export type AddStickerProps = {
+    image : string;
+    vibe : string;
+}
+export const addSticker = callTo<AddStickerProps>('/api/sticker/add');
+
+export const getStickers = callTo<any>('/api/sticker/get')

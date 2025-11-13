@@ -1,6 +1,7 @@
 import { Flex, GroupBar,
          GroupInfoBar, Chat, 
-         RitmikModal} from "@/components";
+         RitmikModal,
+         StickerModal} from "@/components";
 
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
@@ -27,7 +28,8 @@ export default function Page() {
 
     const [gVibe, setGVibe] = React.useState<string>("");
     const [gName, setGName] = React.useState<string>("");
-    const [ritmikOpen, setRitmikOpen] = React.useState<boolean>(false);    
+    const [ritmikOpen, setRitmikOpen] = React.useState<boolean>(false);
+    const [stickerOpen, setStickerOpen] = React.useState<boolean>(false);   
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
     return (
     <>
@@ -37,6 +39,11 @@ export default function Page() {
         mvibe={gVibe}
         vibes={vibes}
         group={group}
+    />
+    <StickerModal
+        group={group}
+        setIsOpen={setStickerOpen}
+        isOpen={stickerOpen}
     />
     <Flex align="stretch" className={styles.main}>
         <GroupBar setGroup={setGroup} />
@@ -56,6 +63,7 @@ export default function Page() {
                 user={user}
                 vibes={gVibe}
                 setRitmikOpen={setRitmikOpen}
+                setStickerOpen={setStickerOpen}
             />
         </Flex>
     </Flex>

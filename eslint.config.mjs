@@ -25,6 +25,7 @@ const eslintConfig = [
       "@typescript-eslint/no-explicit-any": 0,
       "react-hooks/exhaustive-deps": 0,
       "react/jsx-key": 0,
+      "@next/next/no-img-element": 0,
     },
   }
 ];

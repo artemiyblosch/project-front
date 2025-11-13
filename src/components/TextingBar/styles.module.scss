@@ -9,23 +9,31 @@
     border-radius: none;
 }
 
-.form input {
-    background-color: #232629;
-    color: #616369;
-    height: 5vh;
-    border: none;
-    width: 100%;
-    font-size: 24px;
-    padding-left: 10px;
-}
 
-.form button {
-    position: absolute;
-    right: 50px;
-    transition: all 0.5s ease;
-}
+.form {
+    input {
+        background-color: #232629;
+        color: #616369;
+        height: 5vh;
+        border: none;
+        width: 100%;
+        font-size: 24px;
+        padding-left: 10px;
+    }
 
-.form button:hover {
-    filter: brightness(200%);
-    transition: all 0.5s ease;
+    .stickerBt {
+        right: 150px;
+    }
+    .textBt {
+        right: 50px;
+    }
+    button {
+        position: absolute;
+
+        transition: all 0.5s ease;
+        &:hover {
+            filter: brightness(200%);
+            transition: all 0.5s ease;
+        }
+    }
 }
