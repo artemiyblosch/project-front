@@ -5,6 +5,7 @@ import Form from "next/form";
 import { APIQuery } from "@/lib/forms";
 import { addSticker, APICall } from "@/lib/calls";
 import { readSyncDataURL } from "@/lib/b64";
+import { Flex } from "../Flex";
 
 type _ = {
     isOpen : boolean;
@@ -28,6 +29,7 @@ export const AddStickerModal : React.FC<_> = ({
     }).callable()(formData);
 
     return <Modal isOpen={isOpen}>
+        <Flex className={styles.main}>
         <button 
             className={`${styles.button} ${styles.close}`}
             onClick={()=>{setIsOpen(false)}}
@@ -41,5 +43,6 @@ export const AddStickerModal : React.FC<_> = ({
             <input type="radio" name="vibe" value="sad"/>
             <button type="submit">Отправить</button>
         </Form>
+        </Flex>
     </Modal>
 }

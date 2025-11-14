@@ -6,6 +6,7 @@
     position: absolute;
     top: 22.5vh;
     left: 25vw;
+    padding: 15px;
 }
 
 .button {
@@ -22,4 +23,13 @@
     position: absolute;
     right: 40px;
     top: 40px;
+}
+
+.sticker img {
+    width: 60px;
+    height: auto;
+}
+
+.label {
+    font-size: 25px;
 }

@@ -50,43 +50,55 @@ export const StickerModal : React.FC<_> = ({
         >
             <CloseIcon/>
         </button>
-            <label>❤️</label>
+            <label className={styles.label}>❤️</label>
             <Grid 
-                templateColumns={["repeat(60px,6)"]}
+                templateColumns={["60px","60px","60px","60px","60px"]}
                 templateRows={[]}
                 gap="10px"
             >
                 {stickers
                 ?.filter((s : any)=>s?.vibe === "ct")
-                .map((s : any) => <button onClick={() => sendSticker(s?.pk)}>
-                    <img alt="" src={s?.image}/>
+                .map((s : any) => <button 
+                    onClick={() => sendSticker(s?.pk)} 
+                    className={`${styles.sticker} ${styles.button}`}
+                >
+                    <img alt="" src={s?.image} />
                 </button>)}
             </Grid>
-            <label>😎</label>
+            <label className={styles.label}>😎</label>
             <Grid 
-                templateColumns={["repeat(60px,6)"]}
+                templateColumns={["60px","60px","60px","60px","60px"]}
                 templateRows={[]}
                 gap="10px"
             >
                 {stickers
                 ?.filter((s : any)=>s?.vibe === "cool")
-                .map((s : any) => <button onClick={() => sendSticker(s?.pk)}>
+                .map((s : any) => <button 
+                    onClick={() => sendSticker(s?.pk)}
+                    className={`${styles.sticker} ${styles.button}`}
+                >
                     <img alt="" src={s?.image}/>
                 </button>)}
             </Grid>
-            <label>😭</label>
+            <label className={styles.label}>😭</label>
             <Grid 
-                templateColumns={["repeat(60px,6)"]}
+                templateColumns={["60px","60px","60px","60px","60px"]}
                 templateRows={[]}
                 gap="10px"
             >
                 {stickers
                 ?.filter((s : any)=>s?.vibe === "sad")
-                .map((s : any) => <button onClick={() => sendSticker(s?.pk)}>
+                .map((s : any) => <button 
+                    onClick={() => sendSticker(s?.pk)}
+                    className={`${styles.sticker} ${styles.button}`}
+                >
                     <img alt="" src={s?.image}/>
                 </button>)}
             </Grid>
-            <button onClick={() => setAddStickerOpen(true)}><AddStickerIcon/></button>
+            <button 
+                onClick={() => setAddStickerOpen(true)}
+                className={styles.button}
+            ><AddStickerIcon/></button>
         </Flex>
     </Modal>
     <AddStickerModal
