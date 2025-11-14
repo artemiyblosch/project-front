@@ -31,7 +31,7 @@ export const Chat : React.FC<ChatProps> = ({
     <ChatBackdrop className={styles.bg}>
             { messages.map( (m : any) => <Message
                 text = {m?.text} 
-                own = {m?.owner?.pk === user?.pk}
+                own = {m?.owner?.tag === user?.tag}
                 type = {m?.type}
             /> )}
     </ChatBackdrop>

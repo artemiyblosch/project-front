@@ -41,7 +41,7 @@ export const StickerModal : React.FC<_> = ({
         .callable()({});
         setIsOpen(false);
     }
-    React.useEffect(()=>getSt({}),[]);
+    React.useEffect(()=>getSt({}),[isOpen]);
     return (<>
     <Modal isOpen={isOpen}>
         <Flex direction="column" className={styles.main} align="stretch" gap={"10px"}>
@@ -53,7 +53,7 @@ export const StickerModal : React.FC<_> = ({
         </button>
             <label className={styles.label}>❤️</label>
             <Grid 
-                templateColumns={["60px","60px","60px","60px","60px"]}
+                templateColumns={["150px","150px","150px","150px","150px"]}
                 templateRows={[]}
                 gap="10px"
             >
@@ -68,7 +68,7 @@ export const StickerModal : React.FC<_> = ({
             </Grid>
             <label className={styles.label}>😎</label>
             <Grid 
-                templateColumns={["60px","60px","60px","60px","60px"]}
+                templateColumns={["150px","150px","150px","150px","150px"]}
                 templateRows={[]}
                 gap="10px"
             >
@@ -83,7 +83,7 @@ export const StickerModal : React.FC<_> = ({
             </Grid>
             <label className={styles.label}>😭</label>
             <Grid 
-                templateColumns={["60px","60px","60px","60px","60px"]}
+                templateColumns={["150px","150px","150px","150px","150px"]}
                 templateRows={[]}
                 gap="10px"
             >
@@ -106,5 +106,6 @@ export const StickerModal : React.FC<_> = ({
         setIsOpen={setAddStickerOpen}
         isOpen={addStickerOpen}
         setParentOpen={setIsOpen}
+        getStickers={getSt}
     /></>)
 }

@@ -13,10 +13,11 @@ type _ = {
     isOpen : boolean;
     setIsOpen : React.Dispatch<boolean>;
     setParentOpen : React.Dispatch<boolean>;
+    getStickers : (a: any)=>void;
 }
 
 export const AddStickerModal : React.FC<_> = ({
-    isOpen, setIsOpen, setParentOpen
+    isOpen, setIsOpen, setParentOpen, getStickers
 }) => {
     const addSt = (formData : FormData) => new APIQuery(
         [],
@@ -34,7 +35,7 @@ export const AddStickerModal : React.FC<_> = ({
     const [vibe, setVibe] = React.useState<string>("ct");
 
     return <Modal isOpen={isOpen}>
-        <Form action={(f)=>{addSt(f);setIsOpen(false);setParentOpen(false)}} className={styles.radio}>
+        <Form action={(f)=>{addSt(f);setIsOpen(false);setParentOpen(false);getStickers({})}} className={styles.radio}>
         <Flex className={styles.main} align="center" direction="column" gap="20px">
         <button 
             type="button"
