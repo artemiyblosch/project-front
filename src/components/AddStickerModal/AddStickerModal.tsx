@@ -6,6 +6,8 @@ import { APIQuery } from "@/lib/forms";
 import { addSticker, APICall } from "@/lib/calls";
 import { readSyncDataURL } from "@/lib/b64";
 import { Flex } from "../Flex";
+import React from "react";
+import { Grid } from "../Grid";
 
 type _ = {
     isOpen : boolean;
@@ -17,32 +19,41 @@ export const AddStickerModal : React.FC<_> = ({
     isOpen, setIsOpen, setParentOpen
 }) => {
     const addSt = (formData : FormData) => new APIQuery(
-        ["vibe"],
+        [],
         addSticker as APICall
     )
     .addParams({
-        image: readSyncDataURL(formData?.get("image"))
+        image: readSyncDataURL(formData?.get("image")),
+        vibe
     })
     .addResponseTo(200,() => {
         setIsOpen(false);
         setParentOpen(false);
-    }).callable()(formData);
+    }).callable()({});
+
+    const [vibe, setVibe] = React.useState<string>("ct");
 
     return <Modal isOpen={isOpen}>
-        <Flex className={styles.main}>
+        <Form action={(f)=>{addSt(f);setIsOpen(false);setParentOpen(false)}} className={styles.radio}>
+        <Flex className={styles.main} align="center" direction="column" gap="20px">
         <button 
+            type="button"
             className={`${styles.button} ${styles.close}`}
             onClick={()=>{setIsOpen(false)}}
         >
             <CloseIcon/>
         </button>
-        <Form action={addSt}>
-            <input name="image" type="file"/>
-            <input type="radio" name="vibe" value="ct" checked />
-            <input type="radio" name="vibe" value="cool"/>
-            <input type="radio" name="vibe" value="sad"/>
-            <button type="submit">Отправить</button>
-        </Form>
+        <input name="image" type="file"/>
+        <Grid templateColumns={["40px","auto"]} templateRows={[]} gap="10px">
+            <label className={styles.label}>❤️</label>
+            <input type="radio" onChange={()=>setVibe("ct")} name="vibe" checked={vibe === "ct"} />
+            <label className={styles.label}>😎</label>
+            <input type="radio" onChange={()=>setVibe("cool")} name="vibe" checked={vibe === "cool"} />
+            <label className={styles.label}>😭</label>
+            <input type="radio" onChange={()=>setVibe("sad")} name="vibe" checked={vibe === "sad"} />
+        </Grid>
+        <button type="submit" className={styles.confirm}>Отправить</button>
         </Flex>
+        </Form>
     </Modal>
 }

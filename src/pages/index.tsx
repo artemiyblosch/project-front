@@ -31,6 +31,7 @@ export default function Page() {
     const [ritmikOpen, setRitmikOpen] = React.useState<boolean>(false);
     const [stickerOpen, setStickerOpen] = React.useState<boolean>(false);   
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
+
     return (
     <>
     <RitmikModal 

@@ -23,7 +23,7 @@ export const Message : React.FC<MessageProps> = ({text, own, type}) => {
         case 2:
         return <div>
             <p className={className}>
-                <img alt="" src={`data:image/jpg;base64,${text}`}/>
+                <img alt="" src={text}/>
             </p>
         </div>
     }

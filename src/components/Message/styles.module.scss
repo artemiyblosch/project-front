@@ -16,6 +16,13 @@
     word-wrap: break-word;
     margin: 5px;
     border-radius: 30px;
+    img {
+        width: 80px;
+    }
+    &:has(img) {
+        color: none !important;
+        background: none !important;
+    }
 }
 
 .alienedMessage {

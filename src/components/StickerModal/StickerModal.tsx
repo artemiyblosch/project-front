@@ -28,7 +28,7 @@ export const StickerModal : React.FC<_> = ({
     .addResponseTo(200,(r)=>setStickers(JSON.parse(r)))
     .callable();
 
-    const sendSticker = (s : string) => (
+    const sendSticker = (s : string) => {
         new APIQuery([],textingCall as APICall)
         .addParams({
             type: 2, 
@@ -38,12 +38,13 @@ export const StickerModal : React.FC<_> = ({
             group_pk: group,
         })
         .addResponseTo(200,()=>getSt({}))
-        .callable()({})
-    )
+        .callable()({});
+        setIsOpen(false);
+    }
     React.useEffect(()=>getSt({}),[]);
     return (<>
     <Modal isOpen={isOpen}>
-        <Flex direction="column" className={styles.main} align="stretch">
+        <Flex direction="column" className={styles.main} align="stretch" gap={"10px"}>
         <button 
             className={`${styles.button} ${styles.close}`}
             onClick={()=>{setIsOpen(false)}}

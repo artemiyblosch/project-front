@@ -51,11 +51,12 @@ export const TextingBar : React.FC<TextingBarProps> = ({
                 type="submit" 
                 className={`${styles.destyle} ${styles.textBt}`}
             ><TextingIcon/></button>
-        </Form>
-        <button 
+            <button type="button"
                 className={`${styles.destyle} ${styles.stickerBt}`} 
                 onClick={()=>setStickerOpen(true)}
             ><StickerIcon/></button>
+        </Form>
+        
     </div>
     )
 }
