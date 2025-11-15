@@ -14,12 +14,10 @@ export const Message : React.FC<MessageProps> = ({text, own, type}) => {
         </div>
 
         case 1: return <div>
-            <p className={className}>
-                <audio controls>
+                <audio controls className={className}>
                     <source src="vm.mp3" type="audio/mpeg"/>
                     ???
                 </audio>
-            </p>
         </div>
 
         case 2:
