@@ -17,6 +17,10 @@ export const Message : React.FC<MessageProps> = ({text, own, type}) => {
         case 1: return <div>
             <p className={className}>
                 <button className={styles.vmb}><VoiceMessageIcon/></button>
+                <audio controls>
+                    <source src="vm.mp3" type="audio/mpeg"/>
+                    ???
+                </audio>
             </p>
         </div>
 

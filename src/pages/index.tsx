@@ -9,22 +9,22 @@ import { updateMessages } from "@/lib/updateMessages";
 import React from "react";
 import styles from './index.module.scss'
 import { getGroupInfo } from "@/lib/groups";
+import { useInterval } from "@/lib/useInterval";
 
 export default function Page() {
     'use client'
     const [messages,setMessages] = React.useState<any>([]);
-    const [group, setGroup] = React.useState<string>("2"); 
+    const [group, setGroup] = React.useState<string>("2");
     const user = JSON.parse(getLocal("User"));
     //const router = useRouter();
-    const update = () => {
+    useInterval(()=>{
         updateMessages(
             group,
             setMessages,
             () => /*router.push('/')*/1
         )();
         getGroupInfo(group,setGName,setGVibe,setVibes);
-    }
-    React.useEffect(update);
+    },2000);
 
     const [gVibe, setGVibe] = React.useState<string>("");
     const [gName, setGName] = React.useState<string>("");
