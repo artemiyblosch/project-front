@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Modal } from "../Modal/Modal";
 import styles from './styles.module.scss'
 import { Flex } from "../Flex";
@@ -6,24 +6,16 @@ import { AddStickerIcon, CloseIcon } from "@/assets";
 import { Grid } from "../Grid";
 import { APIQuery } from "@/lib/forms";
 import { APICall, getStickers, textingCall } from "@/lib/calls";
-import { getLocal } from "@/lib/localstorage";
 import { AddStickerModal } from "../AddStickerModal/AddStickerModal";
+import { Context } from "../Context";
 
-type _ = {
-    isOpen : boolean;
-    setIsOpen : React.Dispatch<boolean>;
-    group : string;
-}
-
-export const StickerModal : React.FC<_> = ({
-    isOpen, setIsOpen, group,
-}) => {
-
+export const StickerModal : React.FC = () => {
     const [stickers,setStickers] = React.useState<any>();
+    const [addStickerOpen, setAddStickerOpen] = React.useState<boolean>(false);
+    const {user, group,
+           stickerOpen : isOpen,
+           setStickerOpen : setIsOpen} = useContext(Context)
 
-    const user = JSON.parse(getLocal("User"));
-
-    const [addStickerOpen, setAddStickerOpen] = React.useState<boolean>(false);  
     const getSt = new APIQuery([],getStickers as APICall)
     .addResponseTo(200,(r)=>setStickers(JSON.parse(r)))
     .callable();

@@ -2,31 +2,16 @@ import { ChatBackdrop } from "@/assets"
 import { TextingBar } from "../TextingBar"
 import { Message } from "../Message"
 import styles from './styles.module.scss'
-import React from "react"
+import React, { useContext } from "react"
 import { Ritmik } from "../Ritmik"
+import { Context } from "../Context"
 
-type ChatProps = {
-    messages : any;
-    setMessages : React.Dispatch<any>;
-    group : string;
-    user : any;
-    vibes : string;
-    setRitmikOpen : React.Dispatch<boolean>;
-    setStickerOpen : React.Dispatch<boolean>;
-}
-
-export const Chat : React.FC<ChatProps> = ({
-    group, user, setMessages, messages, 
-    vibes, setRitmikOpen, setStickerOpen
-}) => {
+export const Chat : React.FC = () => {
+    const {messages, user} = useContext(Context);
 
     return (
     <>
-    <Ritmik 
-        vibes={vibes}
-        setRitmikOpen={setRitmikOpen}
-        className={styles.ritmik}
-    />
+    <Ritmik className={styles.ritmik}/>
 
     <ChatBackdrop className={styles.bg}>
             { messages.map( (m : any) => <Message
@@ -35,12 +20,8 @@ export const Chat : React.FC<ChatProps> = ({
                 type = {m?.type}
             /> )}
     </ChatBackdrop>
-    <TextingBar 
-        group={group} 
-        user={user} 
-        setMessages={setMessages}
-        setStickerOpen={setStickerOpen}
-    />
+    
+    <TextingBar/>
     </>
     )
 }

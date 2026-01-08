@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Modal } from "../Modal/Modal";
 import { CloseIcon } from "@/assets";
 import styles from './styles.module.scss'
@@ -6,18 +6,17 @@ import { APIQuery } from "@/lib/forms";
 import { APICall, setVibes } from "@/lib/calls";
 import Form from "next/form";
 import { Grid } from "../Grid";
+import { Context } from "../Context";
 
 type SliderModalProps = {
     isOpen : boolean;
     setIsOpen : React.Dispatch<boolean>;
-    setParentOpen : React.Dispatch<boolean>; // для закрытия окна-родителя
-    group : string;
-    vibes : any;
 }
 
 export const SliderModal : React.FC<SliderModalProps> = ({
-    isOpen, setIsOpen, group, setParentOpen
+    isOpen, setIsOpen
 }) => {
+    const {group, setRitmikOpen : setParentOpen} = useContext(Context)
     const setVibes_ = new APIQuery(
         ["ct","cool","sad"],
         setVibes as APICall

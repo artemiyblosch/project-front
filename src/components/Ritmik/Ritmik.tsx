@@ -1,16 +1,12 @@
 import { RitmikCool, RitmikCt, RitmikNA, RitmikSad } from '@/assets/ritmik';
+import { useContext } from 'react';
+import { Context } from '../Context';
 
-type RitmikProps = {
-    className ?: string;
-    vibes : string;
-    setRitmikOpen : React.Dispatch<boolean>;
-}
-
-export const Ritmik : React.FC<RitmikProps> = ({
+export const Ritmik : React.FC<{className : string}> = ({
     className,
-    vibes,
-    setRitmikOpen
 }) => {
+    const {vibes, setRitmikOpen} = useContext(Context)
+
     return (
     <div 
         className={className}

@@ -5,21 +5,13 @@ import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 //import { useRouter } from "next/navigation";
 import { StickerIcon, TextingIcon } from "@/assets";
+import { useContext } from "react";
+import { Context } from "../Context";
 
-export type TextingBarProps = {
-    group : string;
-    user : any;
-    setMessages : React.Dispatch<any>;
-    setStickerOpen : React.Dispatch<boolean>;
-}
-
-export const TextingBar : React.FC<TextingBarProps> = ({
-    group,
-    user,
-    setMessages,
-    setStickerOpen
-}) => {
+export const TextingBar : React.FC = () => {
     //const router = useRouter();
+    const { group, user, setMessages, setStickerOpen } = useContext(Context);
+
     const text = (text : FormData) => new APIQuery(
         ["text"],
         textingCall as APICall

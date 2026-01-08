@@ -1,19 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Flex } from "../Flex";
 import { UserIcon } from "@/assets";
 import styles from './styles.module.scss';
 import { APICall, getGroups } from "@/lib/calls";
 import { APIQuery } from "@/lib/forms";
-import { getLocal } from "@/lib/localstorage";
+import { Context } from "../Context";
 
-type _ = {
-    setGroup : React.Dispatch<string>;
-}
-
-export const GroupBar : React.FC<_> = ({
-    setGroup,
-}) => {
+export const GroupBar : React.FC = () => {
     const [groups,setGroups] = React.useState({});
+    const {user, setGroup} = useContext(Context);
 
     const getGs = new APIQuery(
         ["pk"],
@@ -23,7 +18,6 @@ export const GroupBar : React.FC<_> = ({
         setGroups(JSON.parse(r));
     }).callable()
 
-    const user = JSON.parse(getLocal("User"));
     React.useEffect(() => getGs({pk: user?.pk}),[]);
 
     return (

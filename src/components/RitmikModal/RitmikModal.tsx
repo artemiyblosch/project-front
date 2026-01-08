@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Modal } from "../Modal/Modal";
 import styles from './styles.module.scss'
 import { Flex } from "../Flex";
@@ -7,20 +7,14 @@ import { Ritmik } from "../Ritmik/Ritmik";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { SliderModal } from "../SliderModal";
 import { Grid } from "../Grid";
+import { Context } from "../Context";
 
-type _ = {
-    isOpen : boolean;
-    setIsOpen : React.Dispatch<boolean>;
-    mvibe : string;
-    vibes : any;
-    group : string;
-}
-
-export const RitmikModal : React.FC<_> = ({
-    isOpen, setIsOpen, mvibe, vibes, group
-}) => {
+export const RitmikModal : React.FC = () => {
     const [sliderModal, setSliderModal] = React.useState<boolean>(false)
 
+    const {ritmikOpen : isOpen, setRitmikOpen : setIsOpen, 
+           gVibe : mvibe, vibes} = useContext(Context);
+        
     return <>
     <Modal isOpen={isOpen}>
         <Flex className={styles.main} align="stretch">
@@ -35,9 +29,7 @@ export const RitmikModal : React.FC<_> = ({
                 align="center"
                 className={styles.ritmikSidebar}
             >
-                <Ritmik 
-                    setRitmikOpen={()=>1}
-                    vibes={mvibe}
+                <Ritmik
                     className={styles.ritmik}
                 />
             </Flex>
@@ -80,12 +72,6 @@ export const RitmikModal : React.FC<_> = ({
             </Grid>
         </Flex>
     </Modal>
-    <SliderModal 
-        isOpen={sliderModal}
-        setIsOpen={setSliderModal}
-        group={group}
-        vibes={vibes}
-        setParentOpen={setIsOpen}
-    />
+    <SliderModal isOpen={sliderModal} setIsOpen={setSliderModal}/>
     </>
 }

@@ -10,6 +10,7 @@ import React from "react";
 import styles from './index.module.scss'
 import { getGroupInfo } from "@/lib/groups";
 import { useInterval } from "@/lib/useInterval";
+import { Context } from "@/components/Context";
 
 export default function Page() {
     'use client'
@@ -33,21 +34,19 @@ export default function Page() {
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
 
     return (
-    <>
-    <RitmikModal 
-        isOpen={ritmikOpen} 
-        setIsOpen={setRitmikOpen}
-        mvibe={gVibe}
-        vibes={vibes}
-        group={group}
-    />
-    <StickerModal
-        group={group}
-        setIsOpen={setStickerOpen}
-        isOpen={stickerOpen}
-    />
+    <Context value={{
+        ritmikOpen, setRitmikOpen,
+        gVibe, setGVibe,
+        stickerOpen, setStickerOpen,
+        vibes, setVibes,
+        group, setGroup,
+        user,
+        messages, setMessages,
+    }}>
+    <RitmikModal/>
+    <StickerModal/>
     <Flex align="stretch" className={styles.main}>
-        <GroupBar setGroup={setGroup} />
+        <GroupBar/>
         <Flex 
                 direction="column" 
                 className={styles.flex}
@@ -57,16 +56,8 @@ export default function Page() {
                 color="#33f03dff"
                 name={gName}
             />
-            <Chat 
-                messages={messages}
-                setMessages={setMessages}
-                group={group}
-                user={user}
-                vibes={gVibe}
-                setRitmikOpen={setRitmikOpen}
-                setStickerOpen={setStickerOpen}
-            />
+            <Chat/>
         </Flex>
     </Flex>
-    </>)
+    </Context>)
 }
