@@ -15,7 +15,7 @@ import { Context } from "@/components/Context";
 export default function Page() {
     'use client'
     const [messages,setMessages] = React.useState<any>([]);
-    const [group, setGroup] = React.useState<string>("2");
+    const [group, setGroup] = React.useState<string>("");
     const user = JSON.parse(getLocal("User"));
     //const router = useRouter();
     useInterval(()=>{
