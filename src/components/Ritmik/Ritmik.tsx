@@ -5,7 +5,7 @@ import { Context } from '../Context';
 export const Ritmik : React.FC<{className : string}> = ({
     className,
 }) => {
-    const {vibes, setRitmikOpen} = useContext(Context)
+    const {gVibe: vibes, setRitmikOpen} = useContext(Context)
 
     return (
     <div 
