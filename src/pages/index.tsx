@@ -33,10 +33,6 @@ export default function Page() {
     const [stickerOpen, setStickerOpen] = React.useState<boolean>(false);   
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
     const [ritmikAnim, setRitmikAnim]= React.useState<boolean>(false);
-    const startAnim = () => {
-        setRitmikAnim(true);
-        setTimeout(()=>setRitmikAnim(false),10000);
-    };
 
     return (
     <Context value={{
@@ -47,7 +43,7 @@ export default function Page() {
         group, setGroup,
         user,
         messages, setMessages,
-        ritmikAnim, startAnim
+        ritmikAnim, setRitmikAnim
     }}>
     <RitmikModal/>
     <StickerModal/>

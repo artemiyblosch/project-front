@@ -1,25 +1,19 @@
 import { RitmikCool, RitmikCt, RitmikNA, RitmikSad } from '@/assets/ritmik';
 import { useContext } from 'react';
 import { Context } from '../Context';
+import { RitmikAnim } from '@/assets/ritmik/anims';
 
 export const Ritmik : React.FC<{className : string}> = ({
     className,
 }) => {
-    const {gVibe: vibes, setRitmikOpen, ritmikAnim : anim} = useContext(Context)
-    if (anim) {
-        const video = <video width="347" height="257" autoPlay onLoadedData={() => {}}>
-            <source src={
-                `/${vibes === "ct" ? "ctanim.mp4" :
-                    (vibes === "cool" ? "coolanim.mp4" : "sadanim.mp4")
-                }`
-            } type="video/mp4"></source>
-        </video>
+    const {gVibe: vibes, setRitmikOpen, ritmikAnim} = useContext(Context)
+    if (ritmikAnim) {
 
         return <div 
         className={className}
         onClick={()=>setRitmikOpen(true)}
     >
-        {video}
+        <RitmikAnim/>
     </div>
     }
     return (

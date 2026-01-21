@@ -10,14 +10,16 @@ export type MessageProps = {
 
 export const Message : React.FC<MessageProps> = ({text, own, type}) => {
     const className = own ? styles.ownMessage : styles.alienedMessage;
-    const {startAnim} = useContext(Context);
+    const {setRitmikAnim} = useContext(Context);
     switch(type) {
         case 0: return <div>
             <p className={className}>{text}</p>
         </div>
 
         case 1: return <div>
-                <audio controls className={className} onPlay={startAnim}>
+                <audio controls className={className} 
+                onPlay={() => setRitmikAnim(true)} onEnded={() => setRitmikAnim(false)} 
+                onPause={() => setRitmikAnim(false)}>
                     <source src="vm.mp3" type="audio/mpeg"/>
                     ???
                 </audio>

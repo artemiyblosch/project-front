@@ -14,7 +14,7 @@ type ContextProps = {
     setMessages : React.Dispatch<React.SetStateAction<any>>,
     user : any,
     ritmikAnim : boolean,
-    startAnim : () => void,
+    setRitmikAnim : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const Context = createContext<ContextProps>({
@@ -32,5 +32,5 @@ export const Context = createContext<ContextProps>({
     setMessages : () => {},
     user : {},
     ritmikAnim : false,
-    startAnim : () => {},
+    setRitmikAnim : () => {},
 });
