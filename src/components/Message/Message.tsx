@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styles from "./styles.module.scss"
+import { Context } from "../Context";
 
 export type MessageProps = {
     text: string;
@@ -8,13 +10,14 @@ export type MessageProps = {
 
 export const Message : React.FC<MessageProps> = ({text, own, type}) => {
     const className = own ? styles.ownMessage : styles.alienedMessage;
+    const {startAnim} = useContext(Context);
     switch(type) {
         case 0: return <div>
             <p className={className}>{text}</p>
         </div>
 
         case 1: return <div>
-                <audio controls className={className}>
+                <audio controls className={className} onPlay={startAnim}>
                     <source src="vm.mp3" type="audio/mpeg"/>
                     ???
                 </audio>
