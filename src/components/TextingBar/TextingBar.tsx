@@ -7,6 +7,8 @@ import { updateMessages } from "@/lib/updateMessages";
 import { StickerIcon, TextingIcon } from "@/assets";
 import { useContext } from "react";
 import { Context } from "../Context";
+//import { Flex } from "../Flex";
+import { Grid } from "../Grid";
 
 export const TextingBar : React.FC = () => {
     //const router = useRouter();
@@ -38,15 +40,17 @@ export const TextingBar : React.FC = () => {
             id="Form"
             className={styles.form}
         >
-            <input name="text" placeholder="Напишите сообщение..."/>
-            <button 
-                type="submit" 
-                className={`${styles.destyle} ${styles.textBt}`}
-            ><TextingIcon/></button>
-            <button type="button"
-                className={`${styles.destyle} ${styles.stickerBt}`} 
-                onClick={()=>setStickerOpen(true)}
-            ><StickerIcon/></button>
+            <Grid templateRows={["1fr"]} templateColumns={["1fr", "75px", "75px", '25px']}>
+                <input name="text" placeholder="Напишите сообщение..."/>
+                <button type="button"
+                    className={`${styles.destyle}`}
+                    onClick={()=>setStickerOpen(true)}
+                ><StickerIcon/></button>
+                <button 
+                    type="submit" 
+                    className={`${styles.destyle}`}
+                ><TextingIcon/></button>
+            </Grid>
         </Form>
         
     </div>

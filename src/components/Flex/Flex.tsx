@@ -14,6 +14,7 @@ type FlexProps = FCProps & {
   align ?: FlexAlign;
   direction ?: FlexDirection;
   gap ?: string;
+  basis ?: string
 }
 
 function defaulted(value ?: any) { 
@@ -26,7 +27,8 @@ export const Flex : React.FC<FlexProps> = ({
   justifyContent, 
   align, 
   direction,
-  gap
+  gap,
+  basis,
   }) => {
     return ( 
     <div className={className} style={{
@@ -35,6 +37,7 @@ export const Flex : React.FC<FlexProps> = ({
       flexDirection: defaulted(direction),
       display: 'flex',
       gap: defaulted(gap),
+      flexBasis: defaulted(basis)
     }}>
       {children}
     </div> )
