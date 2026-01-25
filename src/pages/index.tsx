@@ -13,6 +13,7 @@ import styles from './index.module.scss'
 import { getGroupInfo } from "@/lib/groups";
 import { useInterval } from "@/lib/useInterval";
 import { Context } from "@/components/Context";
+import { ChatBackdrop } from "@/assets";
 
 export default function Page() {
     'use client'
@@ -21,6 +22,7 @@ export default function Page() {
     const user = JSON.parse(getLocal("User"));
     //const router = useRouter();
     useInterval(()=>{
+        if(group === "") return;
         updateMessages(
             group,
             setMessages,
@@ -54,9 +56,11 @@ export default function Page() {
         templateRows={["72px", "1fr","50px"]}
         className={styles.grid}
     >
-        <GroupBar/> <GroupInfoBar color={"#33f03dff"} name={gName}/>
+        <GroupBar/>
+        {group !== "" ? <><GroupInfoBar color={"#33f03dff"} name={gName}/>
         <Chat/>
-        <TextingBar/>
+        <TextingBar/></> :
+        <ChatBackdrop className={styles.fullwidth}/>}
     </Grid>
     </Context>)
 }
