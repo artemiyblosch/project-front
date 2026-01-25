@@ -13,10 +13,9 @@ body {
     font-family: 'Balsamiq Sans', sans-serif;
 }
 
-.group {
-    width: 40%;
-    margin-left: 10px;
+.groupBar {
     border-right: 4px solid #232C42EE;
+    grid-area: a;
 }
 
 .glink {
@@ -25,6 +24,26 @@ body {
     text-decoration: none;
     font-size: 50px;
     font-family: 'Balsamiq Sans', sans-serif;
+}
+
+.group {
+    cursor: pointer;
+    :hover {
+        transition: all 0.25s ease;
+        background-color: #232C42EE;
+    }
+}
+
+.chosen {
+    background: #154380EE;
+    :hover {
+        transition: all 0.25s ease;
+        background: #1B73E4;
+    }
+}
+
+.group:focus {
+    background: white
 }
 
 .icon {

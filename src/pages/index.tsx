@@ -1,7 +1,9 @@
-import { Flex, GroupBar,
+import { GroupBar,
          GroupInfoBar, Chat, 
          RitmikModal,
-         StickerModal} from "@/components";
+         StickerModal,
+         Grid,
+         TextingBar} from "@/components";
 
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
@@ -47,19 +49,14 @@ export default function Page() {
     }}>
     <RitmikModal/>
     <StickerModal/>
-    <Flex align="stretch" className={styles.main}>
-        <GroupBar/>
-        <Flex 
-                direction="column" 
-                className={styles.flex}
-                align="flex-start"
-        >
-            <GroupInfoBar 
-                color="#33f03dff"
-                name={gName}
-            />
-            <Chat/>
-        </Flex>
-    </Flex>
+    <Grid 
+        templateColumns={["40%", "1fr"]}
+        templateRows={["72px", "1fr","50px"]}
+        className={styles.grid}
+    >
+        <GroupBar/> <GroupInfoBar color={"#33f03dff"} name={gName}/>
+        <Chat/>
+        <TextingBar/>
+    </Grid>
     </Context>)
 }

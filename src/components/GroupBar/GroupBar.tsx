@@ -8,7 +8,7 @@ import { Context } from "../Context";
 
 export const GroupBar : React.FC = () => {
     const [groups,setGroups] = React.useState({});
-    const {user, setGroup} = useContext(Context);
+    const {user, setGroup, group} = useContext(Context);
 
     const getGs = new APIQuery(
         ["pk"],
@@ -23,12 +23,14 @@ export const GroupBar : React.FC = () => {
     return (
         <Flex 
             direction="column"
-            gap="20px"
-            className={styles.group}
+            className={styles.groupBar}
         >
             <h1 className={styles.title}>Чаты</h1>
             {Object.values(groups).map((a : any) => (
-                <div onClick={() => setGroup(a?.pk+"")}>
+                <div 
+                    onClick={() => setGroup(a?.pk+"")}
+                    className={`${styles.group} ${group == a?.pk && styles.chosen}`}
+                >
                     <Flex justifyContent="flex-start">
                         <UserIcon color="#aa2daaff" className={styles.icon}/>
                         <span className={styles.glink}>{a?.name}</span>

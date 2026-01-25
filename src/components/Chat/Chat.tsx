@@ -1,5 +1,4 @@
 import { ChatBackdrop } from "@/assets"
-import { TextingBar } from "../TextingBar"
 import { Message } from "../Message"
 import styles from './styles.module.scss'
 import React, { useContext } from "react"
@@ -20,8 +19,6 @@ export const Chat : React.FC = () => {
                 type = {m?.type}
             /> )}
     </ChatBackdrop>
-    
-    <TextingBar/>
     </>
     )
 }
