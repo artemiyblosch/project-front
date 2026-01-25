@@ -4,15 +4,17 @@ import { APIQuery } from "@/lib/forms";
 import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 //import { useRouter } from "next/navigation";
-import { StickerIcon, TextingIcon } from "@/assets";
-import { useContext } from "react";
+import { MicrophoneIcon, StickerIcon, TextingIcon } from "@/assets";
+import { useContext, } from "react";
 import { Context } from "../Context";
 //import { Flex } from "../Flex";
 import { Grid } from "../Grid";
+import { useRecorder } from "react-microphone-recorder";
 
 export const TextingBar : React.FC = () => {
     //const router = useRouter();
     const { group, user, setMessages, setStickerOpen } = useContext(Context);
+    const {startRecording, stopRecording, audioURL} = useRecorder()
 
     const text = (text : FormData) => new APIQuery(
         ["text"],
@@ -32,24 +34,32 @@ export const TextingBar : React.FC = () => {
     ))
     .callable()(text);
 
+    const voiceMessage = () => {
+        startRecording();
+        setTimeout(()=>{stopRecording();alert(audioURL)},10000);
+
+    }
 
     return (
     <div className={styles.texting}>
         <Form 
-            action={(formData) => formData.get("text") ? text(formData) : text(formData)} 
+            action={(formData) => formData.get("text") ? text(formData) : voiceMessage()} 
             id="Form"
             className={styles.form}
         >
             <Grid templateRows={["1fr"]} templateColumns={["1fr", "75px", "75px", '25px']}>
-                <input name="text" placeholder="Напишите сообщение..."/>
+                <input name="text" id="text" placeholder="Напишите сообщение..."/>
                 <button type="button"
                     className={`${styles.destyle}`}
                     onClick={()=>setStickerOpen(true)}
                 ><StickerIcon/></button>
+
                 <button 
                     type="submit" 
                     className={`${styles.destyle}`}
-                ><TextingIcon/></button>
+                >
+                {(document.getElementById("text") as HTMLInputElement)?.value != "" ? <TextingIcon/> : <MicrophoneIcon/>}
+                </button>
             </Grid>
         </Form>
         
