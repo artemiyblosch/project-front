@@ -9,9 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "15.5.3",
+    "next": "^15.5.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-microphone-recorder": "^1.0.0",
     "sass": "^1.93.0"
   },
   "devDependencies": {
