@@ -5,7 +5,7 @@ import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 //import { useRouter } from "next/navigation";
 import { MicrophoneIcon, StickerIcon, TextingIcon } from "@/assets";
-import { useContext, } from "react";
+import { useCallback, useContext } from "react";
 import { Context } from "../Context";
 //import { Flex } from "../Flex";
 import { Grid } from "../Grid";
@@ -14,8 +14,7 @@ import { useRecorder } from "react-microphone-recorder";
 export const TextingBar : React.FC = () => {
     //const router = useRouter();
     const { group, user, setMessages, setStickerOpen } = useContext(Context);
-    const {isRecording, startRecording, stopRecording, audioURL, recordingState} = useRecorder();
-
+    const { isRecording, startRecording, stopRecording, audioURL } = useRecorder();
 
     const text = (text : FormData) => new APIQuery(
         ["text"],
@@ -35,13 +34,14 @@ export const TextingBar : React.FC = () => {
     ))
     .callable()(text);
 
+    const sendVm = useCallback(()=>{console.log(audioURL)},[audioURL]);
     const voiceMessage = () => {
         if(!isRecording) {
             startRecording();
             return;
         }
         stopRecording();
-        alert(audioURL);
+        sendVm();
     }
 
     return (
@@ -71,7 +71,6 @@ export const TextingBar : React.FC = () => {
                 >
                     <TextingIcon/>
                 </button>}
-                {recordingState}
             </Grid>
         </Form>
         
