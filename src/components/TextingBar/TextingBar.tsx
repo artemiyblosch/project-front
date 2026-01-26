@@ -5,7 +5,7 @@ import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 //import { useRouter } from "next/navigation";
 import { MicrophoneIcon, StickerIcon, TextingIcon } from "@/assets";
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Context } from "../Context";
 //import { Flex } from "../Flex";
 import { Grid } from "../Grid";
@@ -15,6 +15,7 @@ export const TextingBar : React.FC = () => {
     //const router = useRouter();
     const { group, user, setMessages, setStickerOpen } = useContext(Context);
     const { isRecording, startRecording, stopRecording, audioURL } = useRecorder();
+    const [isVm, setIsVm] = useState(false);
 
     const text = (text : FormData) => new APIQuery(
         ["text"],
@@ -34,20 +35,21 @@ export const TextingBar : React.FC = () => {
     ))
     .callable()(text);
 
-    const sendVm = useCallback(()=>{console.log(audioURL)},[audioURL]);
-    const voiceMessage = () => {
-        if(!isRecording) {
+    useEffect(() => {
+        if(isVm && !isRecording) {
             startRecording();
             return;
         }
-        stopRecording();
-        sendVm();
-    }
+        if (!isVm) {
+            stopRecording();
+            if (!isRecording && audioURL != "") console.log(audioURL, isRecording);
+        }
+    },[audioURL,isVm]);
 
     return (
     <div className={styles.texting}>
         <Form 
-            action={(formData) => formData.get("text") ? text(formData) : voiceMessage()} 
+            action={(formData) => formData.get("text") ? text(formData) : setIsVm((isvm)=>!isvm)} 
             id="Form"
             className={styles.form}
         >
