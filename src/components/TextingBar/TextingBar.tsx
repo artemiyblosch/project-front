@@ -36,8 +36,12 @@ export const TextingBar : React.FC = () => {
     .callable()(text);
 
     const voiceMessage = () => {
-        if(!isRecording) startRecording();
-
+        if(!isRecording) {
+            startRecording();
+            return;
+        }
+        stopRecording();
+        alert(audioURL);
     }
 
     return (
@@ -50,17 +54,23 @@ export const TextingBar : React.FC = () => {
             <Grid templateRows={["1fr"]} templateColumns={["1fr", "75px", "75px", '25px']}>
                 <input name="text" id="text" placeholder="Напишите сообщение..."/>
                 <button type="button"
-                    className={`${styles.destyle}`}
+                    className={styles.destyle}
                     onClick={()=>setStickerOpen(true)}
                 ><StickerIcon/></button>
 
+                {(document.getElementById('text') as HTMLInputElement)?.value == "" ? 
                 <button 
-                    type={isRecording ? "button" : "submit"}
-                    onClick={()=>{stopRecording();alert(audioURL)}}
                     className={`${styles.destyle} ${isRecording ? styles.on : ""}`}
+                    type="submit"
                 >
-                {(document.getElementById("text") as HTMLInputElement)?.value != "" ? <TextingIcon/> : <MicrophoneIcon/>}
-                </button>
+                    <MicrophoneIcon/>
+                </button> : 
+                <button
+                    className={styles.destyle}
+                    type="submit"
+                >
+                    <TextingIcon/>
+                </button>}
                 {recordingState}
             </Grid>
         </Form>
