@@ -14,7 +14,8 @@ import { useRecorder } from "react-microphone-recorder";
 export const TextingBar : React.FC = () => {
     //const router = useRouter();
     const { group, user, setMessages, setStickerOpen } = useContext(Context);
-    const {startRecording, stopRecording, audioURL} = useRecorder()
+    const {isRecording, startRecording, stopRecording, audioURL, recordingState} = useRecorder();
+
 
     const text = (text : FormData) => new APIQuery(
         ["text"],
@@ -35,8 +36,7 @@ export const TextingBar : React.FC = () => {
     .callable()(text);
 
     const voiceMessage = () => {
-        startRecording();
-        setTimeout(()=>{stopRecording();alert(audioURL)},10000);
+        if(!isRecording) startRecording();
 
     }
 
@@ -55,11 +55,13 @@ export const TextingBar : React.FC = () => {
                 ><StickerIcon/></button>
 
                 <button 
-                    type="submit" 
-                    className={`${styles.destyle}`}
+                    type={isRecording ? "button" : "submit"}
+                    onClick={()=>{stopRecording();alert(audioURL)}}
+                    className={`${styles.destyle} ${isRecording ? styles.on : ""}`}
                 >
                 {(document.getElementById("text") as HTMLInputElement)?.value != "" ? <TextingIcon/> : <MicrophoneIcon/>}
                 </button>
+                {recordingState}
             </Grid>
         </Form>
         
