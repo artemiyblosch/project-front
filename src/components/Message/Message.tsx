@@ -19,9 +19,7 @@ export const Message : React.FC<MessageProps> = ({text, own, type}) => {
         case 1: return <div>
                 <audio controls className={className} 
                 onPlay={() => setRitmikAnim(true)} onEnded={() => setRitmikAnim(false)} 
-                onPause={() => setRitmikAnim(false)}>
-                    <source src="vm.mp3" type="audio/mpeg"/>
-                    ???
+                onPause={() => setRitmikAnim(false)} src={text}>
                 </audio>
         </div>
 

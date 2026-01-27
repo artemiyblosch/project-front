@@ -5,7 +5,7 @@ import { APICall, textingCall } from "@/lib/calls";
 import { updateMessages } from "@/lib/updateMessages";
 //import { useRouter } from "next/navigation";
 import { MicrophoneIcon, StickerIcon, TextingIcon } from "@/assets";
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../Context";
 //import { Flex } from "../Flex";
 import { Grid } from "../Grid";
@@ -14,10 +14,10 @@ import { useRecorder } from "react-microphone-recorder";
 export const TextingBar : React.FC = () => {
     //const router = useRouter();
     const { group, user, setMessages, setStickerOpen } = useContext(Context);
-    const { isRecording, startRecording, stopRecording, audioURL } = useRecorder();
+    const { isRecording, startRecording, stopRecording, audioURL, audioBlob } = useRecorder();
     const [isVm, setIsVm] = useState(false);
 
-    const text = (text : FormData) => new APIQuery(
+    const textAPI = (type : number) => new APIQuery(
         ["text"],
         textingCall as APICall
     )
@@ -25,15 +25,17 @@ export const TextingBar : React.FC = () => {
         group_pk: group,
         pk : user?.pk,
         password: user?.password,
-        type : +!text.get("text"),
+        type,
         vibe : /*+!text.get("text") ? "cool" : */"",
     })
     .addResponseTo(200,updateMessages(
         group,
         setMessages,
         () => /*router.push("/")*/1
-    ))
-    .callable()(text);
+    ));
+
+    const text = textAPI(0).callable();
+    const vmSend = textAPI(1).callable();
 
     useEffect(() => {
         if(isVm && !isRecording) {
@@ -42,7 +44,14 @@ export const TextingBar : React.FC = () => {
         }
         if (!isVm) {
             stopRecording();
-            if (!isRecording && audioURL != "") console.log(audioURL, isRecording);
+            if (!isRecording && audioBlob && audioURL != "") {
+                const reader = new FileReader()
+                reader.onload = function(event) {
+                    const url = event.target?.result;
+                    vmSend({text: url});
+                }
+                reader.readAsDataURL(audioBlob);
+            }
         }
     },[audioURL,isVm]);
 
