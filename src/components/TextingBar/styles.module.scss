@@ -1,5 +1,6 @@
 .texting {
     grid-area: d;
+    background-color: #232629;
 }
 
 .destyle {
@@ -16,11 +17,9 @@
     div {
         width: 100%;
     }
-    background-color: #232629;
     input {
         background: inherit;
         color: #616369;
-        height: 5vh;
         border: none;
         font-size: 24px;
         padding-left: 10px;

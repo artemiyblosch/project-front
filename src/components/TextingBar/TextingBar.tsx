@@ -62,7 +62,7 @@ export const TextingBar : React.FC = () => {
             id="Form"
             className={styles.form}
         >
-            <Grid templateRows={["1fr"]} templateColumns={["1fr", "75px", "75px", '25px']}>
+            <Grid templateRows={["50px"]} templateColumns={["1fr", "75px", "75px", '25px']} align="stretch">
                 <input name="text" id="text" placeholder="Напишите сообщение..."/>
                 <button type="button"
                     className={styles.destyle}

@@ -1,4 +1,3 @@
-// Функция плавной прокрутки
 function smoothScrollTo(targetId) {
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
@@ -9,7 +8,6 @@ function smoothScrollTo(targetId) {
     }
 }
 
-//обработчики для кнопок
 document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('button[data-scroll]');
     
@@ -21,14 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//обработчики для ссылок в нав
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); // Отменяем стандартный переход
-            const targetId = this.getAttribute('href').substring(1); // Убираем # из href
+            e.preventDefault(); 
+            const targetId = this.getAttribute('href').substring(1); 
             smoothScrollTo(targetId);
         });
     });
