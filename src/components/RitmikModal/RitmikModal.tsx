@@ -41,25 +41,25 @@ export const RitmikModal : React.FC = () => {
             >
                 <label>❤️</label>
                 <ProgressBar 
-                    percentage={mvibe === "ct" ? 100 : vibes.ct/(vibes[mvibe]+20)*100}
+                    percentage={mvibe === "ct" ? 100 : vibes.ct/(vibes[mvibe]+5)*100}
                     text={mvibe !== "ct" ? 
-                        `до смены облика: ${vibes[mvibe]+20-vibes.ct}` : 
+                        `до смены облика: ${vibes[mvibe]+5-vibes.ct}` : 
                         "max"}
                     className={`${styles.pbar} ${mvibe === "ct" && styles.maxbar}`}
                 />
                 <label>😎</label>
                 <ProgressBar 
-                    percentage={mvibe === "cool" ? 100 : vibes.cool/(vibes[mvibe]+20)*100}
+                    percentage={mvibe === "cool" ? 100 : vibes.cool/(vibes[mvibe]+5)*100}
                     text={mvibe !== "cool" ? 
-                        `до смены облика: ${vibes[mvibe]+20-vibes.cool}` :
+                        `до смены облика: ${vibes[mvibe]+5-vibes.cool}` :
                         "max"}
                     className={`${styles.pbar} ${mvibe === "cool" ? styles.maxbar : ""}`}
                 />
                 <label>😭</label>
                 <ProgressBar 
-                    percentage={mvibe === "sad" ? 100 : vibes.sad/(vibes[mvibe]+20)*100}
+                    percentage={mvibe === "sad" ? 100 : vibes.sad/(vibes[mvibe]+5)*100}
                     text={mvibe !== "sad" ? 
-                        `до смены облика: ${vibes[mvibe]+20-vibes.sad}` :
+                        `до смены облика: ${vibes[mvibe]+5-vibes.sad}` :
                         "max"}
                     className={`${styles.pbar} ${mvibe === "sad" && styles.maxbar}`}
                 />
