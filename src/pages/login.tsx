@@ -5,7 +5,6 @@ import Form from 'next/form'
 import React from 'react';
 import styles from './login.module.scss'
 import { APIQuery } from '@/lib/forms';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -31,16 +30,33 @@ export default function LoginPage() {
         removeLocal("User")
     },[]);
 
-    return ( 
+    return (
+    <Flex className={styles.centroid} justifyContent='center' align='center'>
     <div className={styles.container}>
-        <h1>Вход</h1>
-        <Form action={auth}>   
-            <Flex direction='column' gap="10px">
-                <input name="tag" required/>
-                <input name="password" type="password" required/>
-                <button type="submit">Войти</button>
-            </Flex>
-        </Form>
-        <Link href="/reg">Нет аккаунта?</Link>
-    </div>)
+      <h1>Вход в аккаунт</h1>
+      <Form id="loginForm" action={auth}>
+        <Flex direction='column' gap="20px">
+            <label>Логин</label>
+            <input
+            type="text"
+            id="username"
+            name="tag"
+            placeholder="Введите логин"
+            required
+            />
+
+            <label>Пароль</label>
+            <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Введите пароль"
+            required
+            />
+
+            <button type="submit" className={styles.loginBtn}>Войти</button>
+        </Flex>
+      </Form>
+    </div>
+    </Flex>)
 }

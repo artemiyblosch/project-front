@@ -1,6 +1,91 @@
+body {
+  background-color: #251A33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.centroid {
+  width: 100vw;
+  height: 100vh;
+}
+
 .container {
-    border: 1px solid black;
-    padding: 35px;
-    margin: 25vh auto;
-    width: 500px;
+/* стили самого контейнера входа */
+  background-color: #35415A; 
+  border-radius: 30px;
+  border: 5px dashed #ffffffa3;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.549);
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+/* стили для надписи "Вход в аккаунт" */
+h1 {
+  color: #C3D7FF;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 35px;
+  font-family: sans-serif;
+}
+
+/* отступы между полями ввода сделано в виде группы*/
+.inputGroup {
+  margin-bottom: 20px;
+}
+/* стили для названия полей тип "логин" "пароль" */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #C3D7FF;
+  font-weight: 500;
+}
+/*стиль для каждого поля ввода */
+input {
+  padding: 12px 15px;
+  border: 1px solid #fff2f2;
+  border-radius: 7px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+/* стили поля ввода когда кликают на него  */
+input:focus {
+  border-color: #7556d5;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+/* стили кнопки входа */
+.loginBtn {
+  padding: 12px;
+  background-color: #2D67FE;
+  color: #C3D7FF;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+/* стили кнопки при наведении курсора */
+.loginBtn:hover {
+  background-color: #214bb6;
+}
+/* стили кнопки при нажатии */
+.loginBtn:active {
+  transform: translateY(1px);
+}
+
+/* адаптивные стили для моб устр (до 480px) */
+@media (max-width: 480px) {
+  .loginContainer {
+    padding: 20px; 
+  }
+}
 }
