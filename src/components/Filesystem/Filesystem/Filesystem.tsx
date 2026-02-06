@@ -22,5 +22,5 @@ export const FileSystem : React.FC = () => {
     }).callable();
     React.useEffect(()=>getTree_({}),[]);
 
-    return <Directory name="" path="" rest_tree={restTree}/>;
+    return <>{Object.keys(restTree[1][group_pk]).map((e)=><Directory name="" path="" rest_tree={restTree[1][group_pk][e]}/>)}</>;
 }
