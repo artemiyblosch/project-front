@@ -54,4 +54,7 @@ export type AddStickerProps = {
 }
 export const addSticker = callTo<AddStickerProps>('/api/sticker/add');
 
-export const getStickers = callTo<any>('/api/sticker/get')
+export const getStickers = callTo<any>('/api/sticker/get');
+
+export const getFile = callTo<any>('api/files/download');
+export const getTree = callTo<any>('api/files/tree');
