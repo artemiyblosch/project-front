@@ -14,7 +14,9 @@ type ContextProps = {
     setMessages : React.Dispatch<React.SetStateAction<any>>,
     user : any,
     ritmikAnim : boolean,
-    setRitmikAnim : React.Dispatch<React.SetStateAction<boolean>>
+    setRitmikAnim : React.Dispatch<React.SetStateAction<boolean>>,
+    filesModalOpen : boolean,
+    setFilesModalOpen : React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 export const Context = createContext<ContextProps>({
@@ -33,4 +35,6 @@ export const Context = createContext<ContextProps>({
     user : {},
     ritmikAnim : false,
     setRitmikAnim : () => {},
+    filesModalOpen : false,
+    setFilesModalOpen : () => {},
 });

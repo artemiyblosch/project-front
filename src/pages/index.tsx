@@ -3,7 +3,8 @@ import { GroupBar,
          RitmikModal,
          StickerModal,
          Grid,
-         TextingBar} from "@/components";
+         TextingBar,
+         FilesModal} from "@/components";
 
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
@@ -37,6 +38,7 @@ export default function Page() {
     const [stickerOpen, setStickerOpen] = React.useState<boolean>(false);   
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
     const [ritmikAnim, setRitmikAnim]= React.useState<boolean>(false);
+    const [filesModalOpen, setFilesModalOpen]= React.useState<boolean>(false);
 
     return (
     <Context value={{
@@ -47,10 +49,12 @@ export default function Page() {
         group, setGroup,
         user,
         messages, setMessages,
-        ritmikAnim, setRitmikAnim
+        ritmikAnim, setRitmikAnim,
+        filesModalOpen, setFilesModalOpen,
     }}>
     <RitmikModal/>
     <StickerModal/>
+    <FilesModal/>
     <Grid 
         templateColumns={["40%", "1fr"]}
         templateRows={["72px", "1fr","50px"]}
