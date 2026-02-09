@@ -36,7 +36,7 @@ export const AddStickerModal : React.FC<_> = ({
 
     return <Modal isOpen={isOpen}>
         <Form action={(f)=>{addSt(f);setIsOpen(false);setParentOpen(false);getStickers({})}} className={styles.radio}>
-        <Flex className={styles.main} align="center" direction="column" gap="20px">
+        <Flex className={styles.main} align="center" direction="column" gap="20px" justifyContent="center">
         <button 
             type="button"
             className={`${styles.button} ${styles.close}`}

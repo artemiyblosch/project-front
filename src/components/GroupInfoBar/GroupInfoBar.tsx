@@ -1,9 +1,8 @@
 import { ComeBackIcon, UserIcon } from "@/assets"
 import { Flex } from "../Flex"
 import styles from './styles.module.scss'
-import React, { useContext } from "react";
+import React from "react";
 import Link from "next/link";
-import { Context } from "../Context";
 
 type GIBProps = {
     color: string;
@@ -14,7 +13,6 @@ export const GroupInfoBar : React.FC<GIBProps> = ({
     color, name
 }) => {
     'use client'
-    const {setFilesModalOpen} = useContext(Context);
     return (
     <Flex
         gap="10px"
@@ -32,9 +30,6 @@ export const GroupInfoBar : React.FC<GIBProps> = ({
             <span className={styles.gtitle}>{name}</span>
             <span className={styles.gstat}>в сети</span>
         </Flex>
-        <button onClick={()=>setFilesModalOpen(true)}>
-            Файлы
-        </button>
     </Flex>
     )
 }
