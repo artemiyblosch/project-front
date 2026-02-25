@@ -3,8 +3,7 @@ import { GroupBar,
          RitmikModal,
          StickerModal,
          Grid,
-         TextingBar,
-         FilesModal} from "@/components";
+         TextingBar} from "@/components";
 
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
@@ -54,7 +53,6 @@ export default function Page() {
     }}>
     <RitmikModal/>
     <StickerModal/>
-    <FilesModal/>
     <Grid 
         templateColumns={["40%", "1fr"]}
         templateRows={["72px", "1fr","50px"]}
