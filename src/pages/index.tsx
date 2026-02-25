@@ -28,7 +28,7 @@ export default function Page() {
             setMessages,
             () => /*router.push('/')*/1
         )();
-        getGroupInfo(group,setGName,setGVibe,setVibes);
+        getGroupInfo(user,group,setGName,setGVibe,setVibes, setWarn);
     },2000);
 
     const [gVibe, setGVibe] = React.useState<string>("");
@@ -38,6 +38,7 @@ export default function Page() {
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
     const [ritmikAnim, setRitmikAnim]= React.useState<boolean>(false);
     const [filesModalOpen, setFilesModalOpen]= React.useState<boolean>(false);
+    const [warn, setWarn]= React.useState<number>(1);
 
     return (
     <Context value={{
@@ -50,9 +51,11 @@ export default function Page() {
         messages, setMessages,
         ritmikAnim, setRitmikAnim,
         filesModalOpen, setFilesModalOpen,
+        warn, setWarn,
     }}>
     <RitmikModal/>
     <StickerModal/>
+
     <Grid 
         templateColumns={["40%", "1fr"]}
         templateRows={["72px", "1fr","50px"]}
