@@ -9,11 +9,11 @@ export const Warn : React.FC = () => {
 
     useEffect(() => {
         if(warn == 0) return;
-        new APIQuery([],unwarn as APICall).addParams({
+        setTimeout(() => new APIQuery([],unwarn as APICall).addParams({
             pk: group,
             tag: user?.tag,
             password: user?.password,
-        }).callable()({});
+        }).callable()({}), 10000);
     },[warn]);
 
     switch (warn) {
@@ -21,7 +21,7 @@ export const Warn : React.FC = () => {
         return (
     <div className={styles.warn}>
         <span>
-Ой-ой! 😱 Похоже на уловку мошенников!
+Ой-ой! 😱 Похоже на уловку мошенников!<br/>
 Позови родителей! ❤️😊
         </span>
     </div>
@@ -30,8 +30,9 @@ export const Warn : React.FC = () => {
         return (
     <div className={styles.warn}>
         <span>
-Эй! Тут кто-то грубит! 👿
-Позовём старших? Вместе с родителями разберемся быстрее! 🛡️👨👩
+Эй! Тут кто-то грубит! 👿<br/>
+Позовём старших?<br/>
+Вместе с родителями разберемся быстрее! 🛡️👨👩
         </span>
     </div>
         )

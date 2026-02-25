@@ -55,16 +55,17 @@ export default function Page() {
     }}>
     <RitmikModal/>
     <StickerModal/>
-
     <Grid 
         templateColumns={["40%", "1fr"]}
         templateRows={["72px", "1fr","50px"]}
         className={styles.grid}
     >
         <GroupBar/>
-        {group !== "" ? <><GroupInfoBar color={"#33f03dff"} name={gName}/>
-        <Chat/>
-        <TextingBar/></> :
+        {group !== "" ? <>
+            <GroupInfoBar color={"#33f03dff"} name={gName}/>
+            <Chat/>
+            <TextingBar/>
+        </> :
         <ChatBackdrop className={styles.fullwidth}/>}
     </Grid>
     </Context>)

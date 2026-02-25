@@ -1,4 +1,4 @@
-body {
+.centroid {
   background-color: #251A33;
   display: flex;
   justify-content: center;
@@ -9,9 +9,6 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
-}
-
-.centroid {
   width: 100vw;
   height: 100vh;
 }

@@ -25,6 +25,8 @@ export const getGroupInfo : ggi = (user, group, setGName, setGvibe, setVibes, se
             setWarn(1);
         } else if(req.toxic_warns.includes(user.tag)) {
             setWarn(2);
+        } else {
+            setWarn(0);
         }
     })
     .addResponseTo(404, () => alert("OKAK"))
