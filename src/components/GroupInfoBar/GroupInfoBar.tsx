@@ -20,7 +20,7 @@ export const GroupInfoBar : React.FC<GIBProps> = ({
         className={styles.bar}
     >
         <Link 
-            href="/" 
+            href="/login" 
             className={styles.comebackLink}
         >
             <ComeBackIcon/>

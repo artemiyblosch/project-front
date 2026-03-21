@@ -12,7 +12,7 @@ type ggi = (
 
 export const getGroupInfo : ggi = (user, group, setGName, setGvibe, setVibes, setWarn) => (
     new APIQuery(
-        ["pk"],
+        ["pk", "tag", "password"],
         getGroup as APICall
     )
     .addResponseTo(200, (r) => {
@@ -21,9 +21,9 @@ export const getGroupInfo : ggi = (user, group, setGName, setGvibe, setVibes, se
         setGvibe(req.main_vibe);
         setVibes({ct: req.vibes.ct, cool: req.vibes.cool, sad: req.vibes.sad});
 
-        if(req.scam_warns.includes(user.tag)) {
+        if(req.scam_warns) {
             setWarn(1);
-        } else if(req.toxic_warns.includes(user.tag)) {
+        } else if(req.toxic_warns) {
             setWarn(2);
         } else {
             setWarn(0);
@@ -31,5 +31,5 @@ export const getGroupInfo : ggi = (user, group, setGName, setGvibe, setVibes, se
     })
     .addResponseTo(404, () => alert("OKAK"))
     .addOnFailure((e) => alert(`???: ${e}`))
-    .callable()({pk: group})
+    .callable()({pk: group, tag: user.tag, password: user.password})
 )

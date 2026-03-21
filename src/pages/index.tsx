@@ -38,7 +38,7 @@ export default function Page() {
     const [vibes, setVibes] = React.useState<any>({ct:0,cool:0,sad:0});
     const [ritmikAnim, setRitmikAnim]= React.useState<boolean>(false);
     const [filesModalOpen, setFilesModalOpen]= React.useState<boolean>(false);
-    const [warn, setWarn]= React.useState<number>(1);
+    const [warn, setWarn]= React.useState<number>(0);
 
     return (
     <Context value={{

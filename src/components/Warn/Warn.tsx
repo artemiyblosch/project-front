@@ -17,6 +17,7 @@ export const Warn : React.FC = () => {
     },[warn]);
 
     switch (warn) {
+        case 0: return <></>
         case 1:
         return (
     <div className={styles.warn}>
