@@ -18,8 +18,8 @@ export const Chat : React.FC = () => {
 
     return (
     <>
-    <Ritmik className={styles.ritmik}/>
-    <Warn/>
+    {user?.hasRitmik && <Ritmik className={styles.ritmik}/>}
+    {user?.hasRitmik && <Warn/>}
     <ChatBackdrop className={styles.bg}>
             { messages.map( (m : any) => <Message
                 text = {m?.text} 
