@@ -62,3 +62,4 @@ type UnwarnProps = {
     pk : number,
 }
 export const unwarn = callTo<UnwarnProps>('api/groups/unwarn')
+export const unwarn_parent = callTo<{pk : number}>('api/users/unwarn')

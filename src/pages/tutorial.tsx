@@ -27,7 +27,6 @@ const HTMLComponent = () => {
                 <li><a href="#teach">ОБУЧЕНИЕ</a></li>
                 <li><a href="#description">ОПИСАНИЕ</a></li>
                 <li><a href="#game">ПРОБНАЯ ВЕРСИЯ</a></li>
-                <li><a href="https://www.rustore.ru/catalog/app/ru.oneme.app">СКАЧАТЬ МАКС</a></li>
             </ul>
         </nav>
     </div>
@@ -52,27 +51,6 @@ const HTMLComponent = () => {
           <button data-scroll="teach">ОБУЧЕНИЕ</button>
           <button data-scroll="description">ФУНКЦИИ</button>
           <button data-scroll="game">ПОПРОБУЙ</button>
-        </div>
-      </section>
-      <section id="MAX" class="second">
-        <div class="big-frame2">
-          <div class="left-section2">
-            <img src="S.png" alt="фон" />
-          </div>
-          <div class="S">
-            <img src="image 7.png" alt="поверх" />
-          </div>
-          <div class="text-con">
-            Российский мессенджер
-            <div>MAX</div>
-          </div>
-          <div class="right-section2">
-            <p>
-              MAX — современный мессенджер, разработанный в России. Платформа
-              объединяет текстовые сообщения, голосовые и видеозвонки с
-              познавательными и развлекательными функциями.
-            </p>
-          </div>
         </div>
       </section>
       <section id="about" class="third">
@@ -140,6 +118,28 @@ const HTMLComponent = () => {
           <div class="dark"></div>
           <a href="/login" class="overlay-button">ПОПРОБОВАТЬ</a>
         </div>
+        </div>
+      </section>
+      <section id="accounts" class="seventh">
+        <div class="big-frame7">
+          <div class="people">
+            <div class="aunthentication">Логины и пароли для пробных аккаунтов</div>
+            <div class="parent">
+              <img src="parent.jpg" alt=" " />
+              <p class="f1">Родитель</p>
+              <p class="log">Логин: parent <br /> Пароль: Bz4</p>
+            </div>
+            <div class="kinder">
+              <img src="kinder.jpg" alt=" " />
+              <p class="f1">Ребёнок</p>
+              <p class="log">Логин: child <br /> Пароль: Aa1</p>
+            </div>
+            <div class="badguy">
+              <img src="badguy.jpg" alt=" " />
+              <p class="f1">Мошенник</p>
+              <p class="log">Логин: evil <br /> Пароль: Cr7</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>

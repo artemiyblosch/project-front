@@ -579,3 +579,85 @@ a {
   padding: 40px 0 20px;
   margin-top: 80px;
 }
+
+.big-frame7 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: radial-gradient(ellipse, #443f87, #35415a);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 0 30px #fff;
+  border: 10px dashed #e0e0e0;
+  width: 90vw;
+  max-width: 1200px;
+  height: 78vh;
+  max-height: 500px;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+
+.people {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  gap: 60px;
+  height: auto;
+  width: auto;
+  position: relative; 
+}
+
+.aunthentication {
+  font-family: "Balsamiq Sans", sans-serif;
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 45px;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.parent, .kinder, .badguy {
+  background-color: #3a356e;
+  height: 55vh;
+  width: 50vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: flex-start; 
+  padding-top: 60px; 
+  position: relative;
+  margin-top: 100px; 
+}
+
+
+.parent > img, 
+.kinder > img, 
+.badguy > img {
+  height: 20vh;
+  object-fit: contain;
+  display: block;
+}
+
+.f1, .log {
+  font-family: "Balsamiq Sans", sans-serif;
+  color: #c3d7ff;
+  text-align: center;
+  margin: 0;
+}
+
+.f1 {
+  font-size: 40px;
+  margin-top: 20px; 
+}
+
+.log {
+  font-size: 35px;
+  margin-top: 10px; 
+}
