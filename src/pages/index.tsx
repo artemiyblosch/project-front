@@ -3,7 +3,8 @@ import { GroupBar,
          RitmikModal,
          StickerModal,
          Grid,
-         TextingBar} from "@/components";
+         TextingBar,
+         RitmikParentWarn} from "@/components";
 
 import { getLocal } from "@/lib/localstorage";
 import { updateMessages } from "@/lib/updateMessages";
@@ -66,7 +67,9 @@ export default function Page() {
             <Chat/>
             <TextingBar/>
         </> :
-        <ChatBackdrop className={styles.fullwidth}/>}
+        <ChatBackdrop className={styles.fullwidth}>
+            <RitmikParentWarn/>
+        </ChatBackdrop>}
     </Grid>
     </Context>)
 }
